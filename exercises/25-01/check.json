@@ -1,0 +1,1242 @@
+{
+  "id": "25-01",
+  "title": "여덟 줄 맞대기와 「손으로」 심판 칸",
+  "chapter": "25장 25.1 줄마다 맞대기 · 25.2 다르면 어느 쪽이 틀렸나",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/부서 관리대장.xlsx 사본 · 24장 결과",
+  "submit_file": "25-01_대조.xlsx",
+  "checks": [
+    {
+      "type": "sheet_exists",
+      "what": "「대조」 시트가 있다",
+      "sheet": "대조"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조 머리글 A1 = 「부서」",
+      "sheet": "대조",
+      "cell": "A1",
+      "expect": "부서"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조 머리글 B1 = 「항목」",
+      "sheet": "대조",
+      "cell": "B1",
+      "expect": "항목"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조 머리글 C1 = 「엑셀」",
+      "sheet": "대조",
+      "cell": "C1",
+      "expect": "엑셀"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조 머리글 D1 = 「화면」",
+      "sheet": "대조",
+      "cell": "D1",
+      "expect": "화면"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조 머리글 E1 = 「손으로」",
+      "sheet": "대조",
+      "cell": "E1",
+      "expect": "손으로"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조 머리글 F1 = 「같은가」",
+      "sheet": "대조",
+      "cell": "F1",
+      "expect": "같은가"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!A2 = 「영업1팀」",
+      "sheet": "대조",
+      "cell": "A2",
+      "expect": "영업1팀"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!B2 = 「매출합계」",
+      "sheet": "대조",
+      "cell": "B2",
+      "expect": "매출합계"
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업1팀 매출합계 — 엑셀 쪽 값",
+      "sheet": "대조",
+      "cell": "C2",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "sum",
+        "range": "D4:D19",
+        "where": [
+          {
+            "range": "B4:B19",
+            "equals": "영업1팀"
+          }
+        ]
+      },
+      "source_note": "원본 대장·기준의 입력 칸에서 지금 정산 수식과 같은 규칙(부서 이름 정확히 일치, 엑셀 ROUND)으로 채점기가 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업1팀 매출합계 — 화면 쪽 값",
+      "sheet": "대조",
+      "cell": "D2",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "sum",
+        "range": "D4:D19",
+        "where": [
+          {
+            "range": "B4:B19",
+            "equals": "영업1팀"
+          }
+        ]
+      },
+      "source_note": "원본 대장·기준의 입력 칸에서 지금 정산 수식과 같은 규칙(부서 이름 정확히 일치, 엑셀 ROUND)으로 채점기가 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업1팀 매출합계 — 「손으로」 값이 대장을 직접 더한 값이다",
+      "sheet": "대조",
+      "cell": "E2",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "sum",
+        "range": "D4:D19",
+        "where": [
+          {
+            "range": "B4:B19",
+            "equals": "영업1팀"
+          }
+        ]
+      },
+      "source_note": "원본 대장 D 를 부서 이름이 정확히 같은 줄만 채점기가 직접 더한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업1팀 매출합계 — 같은가 = 「같음」",
+      "sheet": "대조",
+      "cell": "F2",
+      "expect": "같음"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!A3 = 「영업1팀」",
+      "sheet": "대조",
+      "cell": "A3",
+      "expect": "영업1팀"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!B3 = 「정산액」",
+      "sheet": "대조",
+      "cell": "B3",
+      "expect": "정산액"
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업1팀 정산액 — 엑셀 쪽 값",
+      "sheet": "대조",
+      "cell": "C3",
+      "expect_from": {
+        "calc": {
+          "expr": "round_excel(if_(s >= t, s*r + if_(n > 4, g, 0), s*r*0.5), -3)",
+          "vars": {
+            "s": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            },
+            "t": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "기준",
+              "op": "lookup",
+              "key_range": "A3:A5",
+              "return_range": "B3:B5",
+              "equals": "영업1팀"
+            },
+            "r": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "기준요율"
+            },
+            "g": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "성과가산"
+            },
+            "n": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장·기준의 입력 칸에서 지금 정산 수식과 같은 규칙(부서 이름 정확히 일치, 엑셀 ROUND)으로 채점기가 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업1팀 정산액 — 화면 쪽 값",
+      "sheet": "대조",
+      "cell": "D3",
+      "expect_from": {
+        "calc": {
+          "expr": "round_excel(if_(s >= t, s*r + if_(n > 4, g, 0), s*r*0.5), -3)",
+          "vars": {
+            "s": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            },
+            "t": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "기준",
+              "op": "lookup",
+              "key_range": "A3:A5",
+              "return_range": "B3:B5",
+              "equals": "영업1팀"
+            },
+            "r": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "기준요율"
+            },
+            "g": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "성과가산"
+            },
+            "n": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장·기준의 입력 칸에서 지금 정산 수식과 같은 규칙(부서 이름 정확히 일치, 엑셀 ROUND)으로 채점기가 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업1팀 정산액 — 「손으로」 칸이 비어 있다(심판을 못 세우는 줄)",
+      "sheet": "대조",
+      "cell": "E3",
+      "expect": ""
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업1팀 정산액 — 같은가 = 「같음」",
+      "sheet": "대조",
+      "cell": "F3",
+      "expect": "같음"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!A4 = 「영업2팀」",
+      "sheet": "대조",
+      "cell": "A4",
+      "expect": "영업2팀"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!B4 = 「매출합계」",
+      "sheet": "대조",
+      "cell": "B4",
+      "expect": "매출합계"
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업2팀 매출합계 — 엑셀 쪽 값",
+      "sheet": "대조",
+      "cell": "C4",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "sum",
+        "range": "D4:D19",
+        "where": [
+          {
+            "range": "B4:B19",
+            "equals": "영업2팀"
+          }
+        ]
+      },
+      "source_note": "원본 대장·기준의 입력 칸에서 지금 정산 수식과 같은 규칙(부서 이름 정확히 일치, 엑셀 ROUND)으로 채점기가 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업2팀 매출합계 — 화면 쪽 값",
+      "sheet": "대조",
+      "cell": "D4",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "sum",
+        "range": "D4:D19",
+        "where": [
+          {
+            "range": "B4:B19",
+            "equals": "영업2팀"
+          }
+        ]
+      },
+      "source_note": "원본 대장·기준의 입력 칸에서 지금 정산 수식과 같은 규칙(부서 이름 정확히 일치, 엑셀 ROUND)으로 채점기가 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업2팀 매출합계 — 「손으로」 값이 대장을 직접 더한 값이다",
+      "sheet": "대조",
+      "cell": "E4",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "sum",
+        "range": "D4:D19",
+        "where": [
+          {
+            "range": "B4:B19",
+            "equals": "영업2팀"
+          }
+        ]
+      },
+      "source_note": "원본 대장 D 를 부서 이름이 정확히 같은 줄만 채점기가 직접 더한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업2팀 매출합계 — 같은가 = 「같음」",
+      "sheet": "대조",
+      "cell": "F4",
+      "expect": "같음"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!A5 = 「영업2팀」",
+      "sheet": "대조",
+      "cell": "A5",
+      "expect": "영업2팀"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!B5 = 「정산액」",
+      "sheet": "대조",
+      "cell": "B5",
+      "expect": "정산액"
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업2팀 정산액 — 엑셀 쪽 값",
+      "sheet": "대조",
+      "cell": "C5",
+      "expect_from": {
+        "calc": {
+          "expr": "round_excel(if_(s >= t, s*r + if_(n > 4, g, 0), s*r*0.5), -3)",
+          "vars": {
+            "s": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업2팀"
+                }
+              ]
+            },
+            "t": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "기준",
+              "op": "lookup",
+              "key_range": "A3:A5",
+              "return_range": "B3:B5",
+              "equals": "영업2팀"
+            },
+            "r": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "기준요율"
+            },
+            "g": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "성과가산"
+            },
+            "n": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업2팀"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장·기준의 입력 칸에서 지금 정산 수식과 같은 규칙(부서 이름 정확히 일치, 엑셀 ROUND)으로 채점기가 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업2팀 정산액 — 화면 쪽 값",
+      "sheet": "대조",
+      "cell": "D5",
+      "expect_from": {
+        "calc": {
+          "expr": "round_excel(if_(s >= t, s*r + if_(n > 4, g, 0), s*r*0.5), -3)",
+          "vars": {
+            "s": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업2팀"
+                }
+              ]
+            },
+            "t": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "기준",
+              "op": "lookup",
+              "key_range": "A3:A5",
+              "return_range": "B3:B5",
+              "equals": "영업2팀"
+            },
+            "r": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "기준요율"
+            },
+            "g": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "성과가산"
+            },
+            "n": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업2팀"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장·기준의 입력 칸에서 지금 정산 수식과 같은 규칙(부서 이름 정확히 일치, 엑셀 ROUND)으로 채점기가 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업2팀 정산액 — 「손으로」 칸이 비어 있다(심판을 못 세우는 줄)",
+      "sheet": "대조",
+      "cell": "E5",
+      "expect": ""
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업2팀 정산액 — 같은가 = 「같음」",
+      "sheet": "대조",
+      "cell": "F5",
+      "expect": "같음"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!A6 = 「영업3팀」",
+      "sheet": "대조",
+      "cell": "A6",
+      "expect": "영업3팀"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!B6 = 「매출합계」",
+      "sheet": "대조",
+      "cell": "B6",
+      "expect": "매출합계"
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업3팀 매출합계 — 엑셀 쪽 값",
+      "sheet": "대조",
+      "cell": "C6",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "sum",
+        "range": "D4:D19",
+        "where": [
+          {
+            "range": "B4:B19",
+            "equals": "영업3팀"
+          }
+        ]
+      },
+      "source_note": "원본 대장·기준의 입력 칸에서 지금 정산 수식과 같은 규칙(부서 이름 정확히 일치, 엑셀 ROUND)으로 채점기가 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업3팀 매출합계 — 화면 쪽 값",
+      "sheet": "대조",
+      "cell": "D6",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "sum",
+        "range": "D4:D19",
+        "where": [
+          {
+            "range": "B4:B19",
+            "equals": "영업3팀"
+          }
+        ]
+      },
+      "source_note": "원본 대장·기준의 입력 칸에서 지금 정산 수식과 같은 규칙(부서 이름 정확히 일치, 엑셀 ROUND)으로 채점기가 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업3팀 매출합계 — 「손으로」 값이 대장을 직접 더한 값이다",
+      "sheet": "대조",
+      "cell": "E6",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "sum",
+        "range": "D4:D19",
+        "where": [
+          {
+            "range": "B4:B19",
+            "equals": "영업3팀"
+          }
+        ]
+      },
+      "source_note": "원본 대장 D 를 부서 이름이 정확히 같은 줄만 채점기가 직접 더한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업3팀 매출합계 — 같은가 = 「같음」",
+      "sheet": "대조",
+      "cell": "F6",
+      "expect": "같음"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!A7 = 「영업3팀」",
+      "sheet": "대조",
+      "cell": "A7",
+      "expect": "영업3팀"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!B7 = 「정산액」",
+      "sheet": "대조",
+      "cell": "B7",
+      "expect": "정산액"
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업3팀 정산액 — 엑셀 쪽 값",
+      "sheet": "대조",
+      "cell": "C7",
+      "expect_from": {
+        "calc": {
+          "expr": "round_excel(if_(s >= t, s*r + if_(n > 4, g, 0), s*r*0.5), -3)",
+          "vars": {
+            "s": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업3팀"
+                }
+              ]
+            },
+            "t": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "기준",
+              "op": "lookup",
+              "key_range": "A3:A5",
+              "return_range": "B3:B5",
+              "equals": "영업3팀"
+            },
+            "r": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "기준요율"
+            },
+            "g": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "성과가산"
+            },
+            "n": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업3팀"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장·기준의 입력 칸에서 지금 정산 수식과 같은 규칙(부서 이름 정확히 일치, 엑셀 ROUND)으로 채점기가 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업3팀 정산액 — 화면 쪽 값",
+      "sheet": "대조",
+      "cell": "D7",
+      "expect_from": {
+        "calc": {
+          "expr": "round_excel(if_(s >= t, s*r + if_(n > 4, g, 0), s*r*0.5), -3)",
+          "vars": {
+            "s": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업3팀"
+                }
+              ]
+            },
+            "t": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "기준",
+              "op": "lookup",
+              "key_range": "A3:A5",
+              "return_range": "B3:B5",
+              "equals": "영업3팀"
+            },
+            "r": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "기준요율"
+            },
+            "g": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "성과가산"
+            },
+            "n": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업3팀"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장·기준의 입력 칸에서 지금 정산 수식과 같은 규칙(부서 이름 정확히 일치, 엑셀 ROUND)으로 채점기가 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업3팀 정산액 — 「손으로」 칸이 비어 있다(심판을 못 세우는 줄)",
+      "sheet": "대조",
+      "cell": "E7",
+      "expect": ""
+    },
+    {
+      "type": "cell_equals",
+      "what": "영업3팀 정산액 — 같은가 = 「같음」",
+      "sheet": "대조",
+      "cell": "F7",
+      "expect": "같음"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!A8 = 「합계」",
+      "sheet": "대조",
+      "cell": "A8",
+      "expect": "합계"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!B8 = 「매출합계」",
+      "sheet": "대조",
+      "cell": "B8",
+      "expect": "매출합계"
+    },
+    {
+      "type": "cell_equals",
+      "what": "합계 매출합계 — 엑셀 쪽 값",
+      "sheet": "대조",
+      "cell": "C8",
+      "expect_from": {
+        "calc": {
+          "expr": "a + b + c",
+          "vars": {
+            "a": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업2팀"
+                }
+              ]
+            },
+            "c": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업3팀"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장·기준의 입력 칸에서 지금 정산 수식과 같은 규칙(부서 이름 정확히 일치, 엑셀 ROUND)으로 채점기가 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "합계 매출합계 — 화면 쪽 값",
+      "sheet": "대조",
+      "cell": "D8",
+      "expect_from": {
+        "calc": {
+          "expr": "a + b + c",
+          "vars": {
+            "a": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업2팀"
+                }
+              ]
+            },
+            "c": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업3팀"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장·기준의 입력 칸에서 지금 정산 수식과 같은 규칙(부서 이름 정확히 일치, 엑셀 ROUND)으로 채점기가 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "합계 매출합계 — 「손으로」 값이 대장을 직접 더한 값이다",
+      "sheet": "대조",
+      "cell": "E8",
+      "expect_from": {
+        "calc": {
+          "expr": "a + b + c",
+          "vars": {
+            "a": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업2팀"
+                }
+              ]
+            },
+            "c": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업3팀"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장 D 를 부서 이름이 정확히 같은 줄만 채점기가 직접 더한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "합계 매출합계 — 같은가 = 「같음」",
+      "sheet": "대조",
+      "cell": "F8",
+      "expect": "같음"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!A9 = 「합계」",
+      "sheet": "대조",
+      "cell": "A9",
+      "expect": "합계"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!B9 = 「정산액」",
+      "sheet": "대조",
+      "cell": "B9",
+      "expect": "정산액"
+    },
+    {
+      "type": "cell_equals",
+      "what": "합계 정산액 — 엑셀 쪽 값",
+      "sheet": "대조",
+      "cell": "C9",
+      "expect_from": {
+        "calc": {
+          "expr": "a + b + c",
+          "vars": {
+            "a": {
+              "calc": {
+                "expr": "round_excel(if_(s >= t, s*r + if_(n > 4, g, 0), s*r*0.5), -3)",
+                "vars": {
+                  "s": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "sheet": "대장",
+                    "op": "sum",
+                    "range": "D4:D19",
+                    "where": [
+                      {
+                        "range": "B4:B19",
+                        "equals": "영업1팀"
+                      }
+                    ]
+                  },
+                  "t": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "sheet": "기준",
+                    "op": "lookup",
+                    "key_range": "A3:A5",
+                    "return_range": "B3:B5",
+                    "equals": "영업1팀"
+                  },
+                  "r": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "op": "defined_name_value",
+                    "name": "기준요율"
+                  },
+                  "g": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "op": "defined_name_value",
+                    "name": "성과가산"
+                  },
+                  "n": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "sheet": "대장",
+                    "op": "count",
+                    "range": "B4:B19",
+                    "where": [
+                      {
+                        "range": "B4:B19",
+                        "equals": "영업1팀"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "b": {
+              "calc": {
+                "expr": "round_excel(if_(s >= t, s*r + if_(n > 4, g, 0), s*r*0.5), -3)",
+                "vars": {
+                  "s": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "sheet": "대장",
+                    "op": "sum",
+                    "range": "D4:D19",
+                    "where": [
+                      {
+                        "range": "B4:B19",
+                        "equals": "영업2팀"
+                      }
+                    ]
+                  },
+                  "t": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "sheet": "기준",
+                    "op": "lookup",
+                    "key_range": "A3:A5",
+                    "return_range": "B3:B5",
+                    "equals": "영업2팀"
+                  },
+                  "r": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "op": "defined_name_value",
+                    "name": "기준요율"
+                  },
+                  "g": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "op": "defined_name_value",
+                    "name": "성과가산"
+                  },
+                  "n": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "sheet": "대장",
+                    "op": "count",
+                    "range": "B4:B19",
+                    "where": [
+                      {
+                        "range": "B4:B19",
+                        "equals": "영업2팀"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "c": {
+              "calc": {
+                "expr": "round_excel(if_(s >= t, s*r + if_(n > 4, g, 0), s*r*0.5), -3)",
+                "vars": {
+                  "s": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "sheet": "대장",
+                    "op": "sum",
+                    "range": "D4:D19",
+                    "where": [
+                      {
+                        "range": "B4:B19",
+                        "equals": "영업3팀"
+                      }
+                    ]
+                  },
+                  "t": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "sheet": "기준",
+                    "op": "lookup",
+                    "key_range": "A3:A5",
+                    "return_range": "B3:B5",
+                    "equals": "영업3팀"
+                  },
+                  "r": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "op": "defined_name_value",
+                    "name": "기준요율"
+                  },
+                  "g": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "op": "defined_name_value",
+                    "name": "성과가산"
+                  },
+                  "n": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "sheet": "대장",
+                    "op": "count",
+                    "range": "B4:B19",
+                    "where": [
+                      {
+                        "range": "B4:B19",
+                        "equals": "영업3팀"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장·기준의 입력 칸에서 지금 정산 수식과 같은 규칙(부서 이름 정확히 일치, 엑셀 ROUND)으로 채점기가 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "합계 정산액 — 화면 쪽 값",
+      "sheet": "대조",
+      "cell": "D9",
+      "expect_from": {
+        "calc": {
+          "expr": "a + b + c",
+          "vars": {
+            "a": {
+              "calc": {
+                "expr": "round_excel(if_(s >= t, s*r + if_(n > 4, g, 0), s*r*0.5), -3)",
+                "vars": {
+                  "s": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "sheet": "대장",
+                    "op": "sum",
+                    "range": "D4:D19",
+                    "where": [
+                      {
+                        "range": "B4:B19",
+                        "equals": "영업1팀"
+                      }
+                    ]
+                  },
+                  "t": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "sheet": "기준",
+                    "op": "lookup",
+                    "key_range": "A3:A5",
+                    "return_range": "B3:B5",
+                    "equals": "영업1팀"
+                  },
+                  "r": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "op": "defined_name_value",
+                    "name": "기준요율"
+                  },
+                  "g": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "op": "defined_name_value",
+                    "name": "성과가산"
+                  },
+                  "n": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "sheet": "대장",
+                    "op": "count",
+                    "range": "B4:B19",
+                    "where": [
+                      {
+                        "range": "B4:B19",
+                        "equals": "영업1팀"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "b": {
+              "calc": {
+                "expr": "round_excel(if_(s >= t, s*r + if_(n > 4, g, 0), s*r*0.5), -3)",
+                "vars": {
+                  "s": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "sheet": "대장",
+                    "op": "sum",
+                    "range": "D4:D19",
+                    "where": [
+                      {
+                        "range": "B4:B19",
+                        "equals": "영업2팀"
+                      }
+                    ]
+                  },
+                  "t": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "sheet": "기준",
+                    "op": "lookup",
+                    "key_range": "A3:A5",
+                    "return_range": "B3:B5",
+                    "equals": "영업2팀"
+                  },
+                  "r": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "op": "defined_name_value",
+                    "name": "기준요율"
+                  },
+                  "g": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "op": "defined_name_value",
+                    "name": "성과가산"
+                  },
+                  "n": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "sheet": "대장",
+                    "op": "count",
+                    "range": "B4:B19",
+                    "where": [
+                      {
+                        "range": "B4:B19",
+                        "equals": "영업2팀"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "c": {
+              "calc": {
+                "expr": "round_excel(if_(s >= t, s*r + if_(n > 4, g, 0), s*r*0.5), -3)",
+                "vars": {
+                  "s": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "sheet": "대장",
+                    "op": "sum",
+                    "range": "D4:D19",
+                    "where": [
+                      {
+                        "range": "B4:B19",
+                        "equals": "영업3팀"
+                      }
+                    ]
+                  },
+                  "t": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "sheet": "기준",
+                    "op": "lookup",
+                    "key_range": "A3:A5",
+                    "return_range": "B3:B5",
+                    "equals": "영업3팀"
+                  },
+                  "r": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "op": "defined_name_value",
+                    "name": "기준요율"
+                  },
+                  "g": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "op": "defined_name_value",
+                    "name": "성과가산"
+                  },
+                  "n": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "sheet": "대장",
+                    "op": "count",
+                    "range": "B4:B19",
+                    "where": [
+                      {
+                        "range": "B4:B19",
+                        "equals": "영업3팀"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장·기준의 입력 칸에서 지금 정산 수식과 같은 규칙(부서 이름 정확히 일치, 엑셀 ROUND)으로 채점기가 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "합계 정산액 — 「손으로」 칸이 비어 있다(심판을 못 세우는 줄)",
+      "sheet": "대조",
+      "cell": "E9",
+      "expect": ""
+    },
+    {
+      "type": "cell_equals",
+      "what": "합계 정산액 — 같은가 = 「같음」",
+      "sheet": "대조",
+      "cell": "F9",
+      "expect": "같음"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 의 원본 「부서 관리대장.xlsx」는 처음 받은 그대로다",
+      "file": "practice/부서 관리대장.xlsx"
+    }
+  ],
+  "checklist": [
+    "엑셀 쪽 값이 비어 있지 않았다 — 비어 있었다면 엑셀로 열어 전체 다시 계산하고 저장한 뒤 계산값이 채워졌는지 세어 보았다",
+    "일부러 천 원 올린 줄을 대조기가 잡았고, 잡힌 줄이 내가 건드린 그 줄이었다(잡은 뒤 되돌렸다)"
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "id": "05-02",
+  "title": "수식 칸에만 회색을 칠한 수식 지도 사본",
+  "chapter": "5장 5.2 입력 셀과 계산 셀을 갈라내기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/부서 관리대장.xlsx",
+  "submit_file": "관리대장_수식지도.xlsx",
+  "checks": [
+    {
+      "type": "fill_present",
+      "what": "정산 B3:D5(부서별 수식 아홉 칸)에 채우기 색이 있다",
+      "sheet": "정산",
+      "range": "B3:D5"
+    },
+    {
+      "type": "fill_present",
+      "what": "정산 B7(매출합계 합계 수식)에 채우기 색이 있다",
+      "sheet": "정산",
+      "range": "B7"
+    },
+    {
+      "type": "fill_present",
+      "what": "정산 D7(정산액 합계 수식)에 채우기 색이 있다",
+      "sheet": "정산",
+      "range": "D7"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "「대장」 시트의 값·수식이 원본과 같다(색만 칠했다)",
+      "sheet": "대장",
+      "range": "A1:F19",
+      "source": "practice/부서 관리대장.xlsx"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "「기준」 시트의 값·수식이 원본과 같다(색만 칠했다)",
+      "sheet": "기준",
+      "range": "A1:C10",
+      "source": "practice/부서 관리대장.xlsx"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "「정산」 시트의 값·수식이 원본과 같다(색만 칠했다)",
+      "sheet": "정산",
+      "range": "A1:D7",
+      "source": "practice/부서 관리대장.xlsx"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "「월별」 시트의 값·수식이 원본과 같다(색만 칠했다)",
+      "sheet": "월별",
+      "range": "A1:B6",
+      "source": "practice/부서 관리대장.xlsx"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "「담당자」 시트의 값·수식이 원본과 같다(색만 칠했다)",
+      "sheet": "담당자",
+      "range": "A1:C5",
+      "source": "practice/부서 관리대장.xlsx"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "「백업_0402」 시트의 값·수식이 원본과 같다(색만 칠했다)",
+      "sheet": "백업_0402",
+      "range": "A1:C8",
+      "source": "practice/부서 관리대장.xlsx"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "「읽어주세요」 시트의 값·수식이 원본과 같다(색만 칠했다)",
+      "sheet": "읽어주세요",
+      "range": "A1:A4",
+      "source": "practice/부서 관리대장.xlsx"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 폴더의 원본 「부서 관리대장.xlsx」는 처음 받은 그대로다",
+      "file": "practice/부서 관리대장.xlsx"
+    }
+  ],
+  "checklist": [
+    "수식이 없는 칸에는 새로 칠한 색이 없다 — F5 [이동 옵션] - [수식]으로 고른 칸 수(상태 표시줄)가 칠한 칸 수와 같다",
+    "practice 폴더 원본 파일 속성의 「수정한 날짜」가 작업 전과 같다"
+  ]
+}

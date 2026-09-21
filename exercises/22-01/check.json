@@ -1,0 +1,151 @@
+{
+  "id": "22-01",
+  "title": "「모름」 칸이 있는 검수표와 고치기 어려운 승인 기록",
+  "chapter": "22장 22.1 어느 단계에서 사람이 봐야 하는지 정하기 · 22.3 승인 기록을 파일로 남기기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/부서 관리대장.xlsx",
+  "submit_file": "22-01_승인.xlsx",
+  "checks": [
+    {
+      "type": "sheet_exists",
+      "what": "「검수표」 시트가 있다",
+      "sheet": "검수표"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검수표 — 검수 지점이 다섯 개 이하다(2~6행 안에 들어가고 7행은 비어 있다)",
+      "sheet": "검수표",
+      "cell": "A7",
+      "expect": ""
+    },
+    {
+      "type": "cell_equals",
+      "what": "검수표 — 지점마다 「무엇을 보는가」(B열)가 비어 있지 않다",
+      "sheet": "검수표",
+      "cell": "B2",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(a >= 1 and a == b, v, '(A열에 지점이 있는 줄은 B열 「무엇을 보는가」를 모두 채워야 합니다)')",
+          "vars": {
+            "a": {
+              "source": "@submitted",
+              "sheet": "검수표",
+              "op": "count",
+              "range": "A2:A6"
+            },
+            "b": {
+              "source": "@submitted",
+              "sheet": "검수표",
+              "op": "count",
+              "range": "B2:B6",
+              "where": [
+                {
+                  "range": "A2:A6",
+                  "not_blank": true
+                }
+              ]
+            },
+            "v": {
+              "source": "@submitted",
+              "sheet": "검수표",
+              "op": "cell",
+              "cell": "B2"
+            }
+          }
+        }
+      },
+      "source_note": "채점기가 제출 파일 검수표에서 지점이 적힌 줄과 「무엇을 보는가」가 적힌 줄을 따로 센 값으로 판정"
+    },
+    {
+      "type": "sheet_exists",
+      "what": "「승인이력」 시트가 있다",
+      "sheet": "승인이력"
+    },
+    {
+      "type": "cell_equals",
+      "what": "승인이력 머리글 A1 = 「일시」",
+      "sheet": "승인이력",
+      "cell": "A1",
+      "expect": "일시"
+    },
+    {
+      "type": "cell_equals",
+      "what": "승인이력 머리글 B1 = 「작업」",
+      "sheet": "승인이력",
+      "cell": "B1",
+      "expect": "작업"
+    },
+    {
+      "type": "cell_equals",
+      "what": "승인이력 머리글 C1 = 「걸린 조건」",
+      "sheet": "승인이력",
+      "cell": "C1",
+      "expect": "걸린 조건"
+    },
+    {
+      "type": "cell_equals",
+      "what": "승인이력 머리글 D1 = 「숫자」",
+      "sheet": "승인이력",
+      "cell": "D1",
+      "expect": "숫자"
+    },
+    {
+      "type": "cell_equals",
+      "what": "승인이력 머리글 E1 = 「승인」",
+      "sheet": "승인이력",
+      "cell": "E1",
+      "expect": "승인"
+    },
+    {
+      "type": "cell_equals",
+      "what": "승인이력 머리글 F1 = 「이유」",
+      "sheet": "승인이력",
+      "cell": "F1",
+      "expect": "이유"
+    },
+    {
+      "type": "cell_equals",
+      "what": "승인이력 — 기록이 한 줄 이상 있고 「이유」 칸(F2)이 비어 있지 않다",
+      "sheet": "승인이력",
+      "cell": "F2",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(n == 1, v, '(승인이력 2행의 이유 칸 F2 를 채워야 합니다)')",
+          "vars": {
+            "n": {
+              "source": "@submitted",
+              "sheet": "승인이력",
+              "op": "count",
+              "range": "F2"
+            },
+            "v": {
+              "source": "@submitted",
+              "sheet": "승인이력",
+              "op": "cell",
+              "cell": "F2"
+            }
+          }
+        }
+      },
+      "source_note": "채점기가 제출 파일에서 빈칸이 아닌 칸을 직접 센 값으로 판정 — 빈칸이 있으면 이 항목이 ✗ 가 됩니다"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "사본의 대장 시트(A1:F19)는 한 칸도 바뀌지 않았다",
+      "sheet": "대장",
+      "range": "A1:F19",
+      "source": "practice/부서 관리대장.xlsx"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 의 원본 「부서 관리대장.xlsx」는 처음 받은 그대로다",
+      "file": "practice/부서 관리대장.xlsx"
+    }
+  ],
+  "checklist": [
+    "검수표 판정 칸(C열)을 누르면 「통과·반려·모름」 세 가지가 목록으로 나온다(데이터 유효성 검사) — 채점기는 아직 이 목록을 보지 못합니다",
+    "「모름」을 골랐을 때 무엇 때문에 판단이 안 서는지 적는 칸이 있다",
+    "승인이력 시트의 기존 줄을 고치려 하면 엑셀이 막는다(시트 보호) — 채점기는 아직 보호 여부를 보지 못합니다"
+  ]
+}

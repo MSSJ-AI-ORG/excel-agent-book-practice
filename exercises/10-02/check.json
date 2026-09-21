@@ -1,0 +1,122 @@
+{
+  "id": "10-02",
+  "title": "찾아오기·여러 조건·중복 빼고 세기, 그리고 함수 메모",
+  "chapter": "10장 10.2 다른 표에서 값 찾아오게 시키기 · 10.3 여러 조건을 겹쳐 세게 시키기 · 10.4",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/이번 달 매출.xlsx",
+  "submit_file": "10-02_함수.xlsx",
+  "checks": [
+    {
+      "type": "cell_equals",
+      "what": "매출!N3 — 찾는 품목 「모니터」",
+      "sheet": "매출",
+      "cell": "N3",
+      "expect": "모니터"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "매출!N4 가 VLOOKUP 수식이다",
+      "sheet": "매출",
+      "cell": "N4",
+      "functions": [
+        "VLOOKUP"
+      ]
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!N4 — N3 품목의 단가(정확히 같은 것만 찾았다)",
+      "sheet": "매출",
+      "cell": "N4",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "lookup",
+        "key_range": "B2:B11",
+        "return_range": "D2:D11",
+        "equals": {
+          "from": {
+            "source": "@submitted",
+            "sheet": "매출",
+            "op": "cell",
+            "cell": "N3"
+          }
+        }
+      },
+      "source_note": "원본 매출 B열에서 제출 파일 N3 의 품목을 찾아 같은 줄 D열 단가를 채점기가 읽은 값"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "매출!N6 이 SUMIFS 수식이다",
+      "sheet": "매출",
+      "cell": "N6",
+      "functions": [
+        "SUMIFS"
+      ]
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!N6 — 이현우·마우스 수량 합",
+      "sheet": "매출",
+      "cell": "N6",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "sum",
+        "range": "C2:C11",
+        "where": [
+          {
+            "range": "A2:A11",
+            "equals": "이현우"
+          },
+          {
+            "range": "B2:B11",
+            "equals": "마우스"
+          }
+        ]
+      },
+      "source_note": "원본 매출에서 담당자가 이현우이고 품목이 마우스인 줄의 수량을 채점기가 직접 더한 값"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "매출!N7 이 수식이다",
+      "sheet": "매출",
+      "cell": "N7"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!N7 — 담당자 수(같은 사람은 한 번만)",
+      "sheet": "매출",
+      "cell": "N7",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "count_distinct",
+        "range": "A2:A11"
+      },
+      "source_note": "원본 매출 A2:A11 의 서로 다른 이름을 채점기가 직접 센 값"
+    },
+    {
+      "type": "sheet_exists",
+      "what": "「함수 메모」 시트가 있다",
+      "sheet": "함수 메모"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "매출 A1:E12 는 원본과 같다",
+      "sheet": "매출",
+      "range": "A1:E12",
+      "source": "practice/이번 달 매출.xlsx"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 폴더의 원본 「이번 달 매출.xlsx」는 처음 받은 그대로다",
+      "file": "practice/이번 달 매출.xlsx"
+    }
+  ],
+  "checklist": [
+    "N4 수식의 넷째 자리에 FALSE(또는 0)가 있다",
+    "N5(FALSE 를 뺀 수식)의 값이 N4 와 다르다 — 모니터는 FALSE 가 없으면 엉뚱한 단가가 나온다",
+    "「함수 메모」 시트에 SUMIF · VLOOKUP · SUMIFS · SUMPRODUCT 가 함수 이름 / 하는 일 / 인수 / 주의할 점 네 칸으로 적혀 있다"
+  ]
+}

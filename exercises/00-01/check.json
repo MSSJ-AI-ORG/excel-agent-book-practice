@@ -1,0 +1,65 @@
+{
+  "id": "00-01",
+  "title": "도구가 엑셀 파일을 정말 읽고 쓰는지 실물로 확인하기",
+  "chapter": "0장 0.5 깔고 한 번 말 걸어 보기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/이번 달 매출.xlsx",
+  "submit_file": "00-01_점검.xlsx",
+  "checks": [
+    {
+      "type": "sheet_exists",
+      "what": "사본에 「점검」 시트가 있다",
+      "sheet": "점검"
+    },
+    {
+      "type": "cell_equals",
+      "what": "점검!B1 — 매출 시트의 데이터 행 수(머리글·합계 줄 빼고)",
+      "sheet": "점검",
+      "cell": "B1",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "count",
+        "range": "A2:A200"
+      },
+      "source_note": "원본 매출 시트 A열에서 담당자가 적힌 칸을 채점기가 직접 센 값"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "점검!B2 — 금액 합계가 숫자가 아니라 SUM 수식으로 들어 있다",
+      "sheet": "점검",
+      "cell": "B2",
+      "functions": ["SUM"]
+    },
+    {
+      "type": "cell_equals",
+      "what": "점검!B2 — 금액 합계 값이 맞다",
+      "sheet": "점검",
+      "cell": "B2",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "sumproduct",
+        "ranges": ["C2:C11", "D2:D11"]
+      },
+      "source_note": "원본 매출 시트의 수량×단가를 행마다 곱해 채점기가 직접 더한 값 — 금액 열(E)의 수식은 쓰지 않았다"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "사본의 매출 시트는 한 칸도 바뀌지 않았다(「고치지 마」가 지켜졌나)",
+      "sheet": "매출",
+      "range": "A1:E12",
+      "source": "practice/이번 달 매출.xlsx"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 폴더의 원본 「이번 달 매출.xlsx」는 처음 받은 그대로다",
+      "file": "practice/이번 달 매출.xlsx"
+    }
+  ],
+  "checklist": [
+    "0.5 의 첫 시킬 말(「열지는 말고, 고치지도 마」)을 그대로 쳤고, 폴더 목록이 돌아왔다",
+    "「설치해도 되는지 먼저 물어봐 줘」를 붙여 시켰고, 설치하기 전에 먼저 물어 왔다(이미 다 깔려 있었다면 그렇다는 답이 왔다)"
+  ]
+}

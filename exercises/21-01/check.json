@@ -1,0 +1,482 @@
+{
+  "id": "21-01",
+  "title": "여덟 줄짜리 검사기",
+  "chapter": "21장 21.1 합계·건수가 맞는지 스스로 세게 하기 · 21.2 값의 범위·자릿수를 벗어나면 잡아내기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/부서 관리대장.xlsx",
+  "submit_file": "21-01_검사기.xlsx",
+  "checks": [
+    {
+      "type": "sheet_exists",
+      "what": "「검사기」 시트가 있다",
+      "sheet": "검사기"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "검사기!B2 (부서가 적힌 줄 수) — 값이 수식이다(「수식으로」를 붙였나)",
+      "sheet": "검사기",
+      "cell": "B2"
+    },
+    {
+      "type": "cell_is_constant",
+      "what": "검사기!C2 (부서가 적힌 줄 수) — 기준이 수식이 아니라 손으로 적은 숫자다",
+      "sheet": "검사기",
+      "cell": "C2"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!B2 (부서가 적힌 줄 수) — 값이 맞다",
+      "sheet": "검사기",
+      "cell": "B2",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "count",
+        "range": "B4:B19"
+      },
+      "source_note": "원본 대장의 입력 칸에서 채점기가 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!C2 (부서가 적힌 줄 수) — 기준이 지금 값과 같다",
+      "sheet": "검사기",
+      "cell": "C2",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "count",
+        "range": "B4:B19"
+      },
+      "source_note": "원본 대장의 입력 칸에서 채점기가 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!D2 (부서가 적힌 줄 수) — 판정이 「통과」다",
+      "sheet": "검사기",
+      "cell": "D2",
+      "expect": "통과"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "검사기!B3 (금액 총합) — 값이 수식이다(「수식으로」를 붙였나)",
+      "sheet": "검사기",
+      "cell": "B3"
+    },
+    {
+      "type": "cell_is_constant",
+      "what": "검사기!C3 (금액 총합) — 기준이 수식이 아니라 손으로 적은 숫자다",
+      "sheet": "검사기",
+      "cell": "C3"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!B3 (금액 총합) — 값이 맞다",
+      "sheet": "검사기",
+      "cell": "B3",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "sum",
+        "range": "D4:D19"
+      },
+      "source_note": "원본 대장의 입력 칸에서 채점기가 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!C3 (금액 총합) — 기준이 지금 값과 같다",
+      "sheet": "검사기",
+      "cell": "C3",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "sum",
+        "range": "D4:D19"
+      },
+      "source_note": "원본 대장의 입력 칸에서 채점기가 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!D3 (금액 총합) — 판정이 「통과」다",
+      "sheet": "검사기",
+      "cell": "D3",
+      "expect": "통과"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "검사기!B4 (부서는 있는데 금액이 빈 줄 수) — 값이 수식이다(「수식으로」를 붙였나)",
+      "sheet": "검사기",
+      "cell": "B4"
+    },
+    {
+      "type": "cell_is_constant",
+      "what": "검사기!C4 (부서는 있는데 금액이 빈 줄 수) — 기준이 수식이 아니라 손으로 적은 숫자다",
+      "sheet": "검사기",
+      "cell": "C4"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!B4 (부서는 있는데 금액이 빈 줄 수) — 값이 맞다",
+      "sheet": "검사기",
+      "cell": "B4",
+      "expect_from": {
+        "calc": {
+          "expr": "a - b",
+          "vars": {
+            "a": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19"
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "not_blank": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장의 입력 칸에서 채점기가 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!C4 (부서는 있는데 금액이 빈 줄 수) — 기준이 지금 값과 같다",
+      "sheet": "검사기",
+      "cell": "C4",
+      "expect_from": {
+        "calc": {
+          "expr": "a - b",
+          "vars": {
+            "a": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19"
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "not_blank": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장의 입력 칸에서 채점기가 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!D4 (부서는 있는데 금액이 빈 줄 수) — 판정이 「통과」다",
+      "sheet": "검사기",
+      "cell": "D4",
+      "expect": "통과"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "검사기!B5 (금액이 음수인 줄 수) — 값이 수식이다(「수식으로」를 붙였나)",
+      "sheet": "검사기",
+      "cell": "B5"
+    },
+    {
+      "type": "cell_is_constant",
+      "what": "검사기!C5 (금액이 음수인 줄 수) — 기준이 수식이 아니라 손으로 적은 숫자다",
+      "sheet": "검사기",
+      "cell": "C5"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!B5 (금액이 음수인 줄 수) — 값이 맞다",
+      "sheet": "검사기",
+      "cell": "B5",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "count",
+        "range": "D4:D19",
+        "where": [
+          {
+            "range": "D4:D19",
+            "lt": 0
+          }
+        ]
+      },
+      "source_note": "원본 대장의 입력 칸에서 채점기가 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!C5 (금액이 음수인 줄 수) — 기준이 지금 값과 같다",
+      "sheet": "검사기",
+      "cell": "C5",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "count",
+        "range": "D4:D19",
+        "where": [
+          {
+            "range": "D4:D19",
+            "lt": 0
+          }
+        ]
+      },
+      "source_note": "원본 대장의 입력 칸에서 채점기가 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!D5 (금액이 음수인 줄 수) — 판정이 「통과」다",
+      "sheet": "검사기",
+      "cell": "D5",
+      "expect": "통과"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "검사기!B6 (금액이 1억을 넘는 줄 수) — 값이 수식이다(「수식으로」를 붙였나)",
+      "sheet": "검사기",
+      "cell": "B6"
+    },
+    {
+      "type": "cell_is_constant",
+      "what": "검사기!C6 (금액이 1억을 넘는 줄 수) — 기준이 수식이 아니라 손으로 적은 숫자다",
+      "sheet": "검사기",
+      "cell": "C6"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!B6 (금액이 1억을 넘는 줄 수) — 값이 맞다",
+      "sheet": "검사기",
+      "cell": "B6",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "count",
+        "range": "D4:D19",
+        "where": [
+          {
+            "range": "D4:D19",
+            "gt": 100000000
+          }
+        ]
+      },
+      "source_note": "원본 대장의 입력 칸에서 채점기가 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!C6 (금액이 1억을 넘는 줄 수) — 기준이 지금 값과 같다",
+      "sheet": "검사기",
+      "cell": "C6",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "count",
+        "range": "D4:D19",
+        "where": [
+          {
+            "range": "D4:D19",
+            "gt": 100000000
+          }
+        ]
+      },
+      "source_note": "원본 대장의 입력 칸에서 채점기가 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!D6 (금액이 1억을 넘는 줄 수) — 판정이 「통과」다",
+      "sheet": "검사기",
+      "cell": "D6",
+      "expect": "통과"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "검사기!B7 (부서 표기 가짓수) — 값이 수식이다(「수식으로」를 붙였나)",
+      "sheet": "검사기",
+      "cell": "B7"
+    },
+    {
+      "type": "cell_is_constant",
+      "what": "검사기!C7 (부서 표기 가짓수) — 기준이 수식이 아니라 손으로 적은 숫자다",
+      "sheet": "검사기",
+      "cell": "C7"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!B7 (부서 표기 가짓수) — 값이 맞다",
+      "sheet": "검사기",
+      "cell": "B7",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "count_distinct",
+        "range": "B4:B19"
+      },
+      "source_note": "원본 대장의 입력 칸에서 채점기가 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!C7 (부서 표기 가짓수) — 기준이 지금 값과 같다",
+      "sheet": "검사기",
+      "cell": "C7",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "count_distinct",
+        "range": "B4:B19"
+      },
+      "source_note": "원본 대장의 입력 칸에서 채점기가 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!D7 (부서 표기 가짓수) — 판정이 「통과」다",
+      "sheet": "검사기",
+      "cell": "D7",
+      "expect": "통과"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "검사기!B8 (부서는 있는데 담당이 빈 줄 수) — 값이 수식이다(「수식으로」를 붙였나)",
+      "sheet": "검사기",
+      "cell": "B8"
+    },
+    {
+      "type": "cell_is_constant",
+      "what": "검사기!C8 (부서는 있는데 담당이 빈 줄 수) — 기준이 수식이 아니라 손으로 적은 숫자다",
+      "sheet": "검사기",
+      "cell": "C8"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!B8 (부서는 있는데 담당이 빈 줄 수) — 값이 맞다",
+      "sheet": "검사기",
+      "cell": "B8",
+      "expect_from": {
+        "calc": {
+          "expr": "a - b",
+          "vars": {
+            "a": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19"
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "E4:E19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "not_blank": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장의 입력 칸에서 채점기가 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!C8 (부서는 있는데 담당이 빈 줄 수) — 기준이 지금 값과 같다",
+      "sheet": "검사기",
+      "cell": "C8",
+      "expect_from": {
+        "calc": {
+          "expr": "a - b",
+          "vars": {
+            "a": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19"
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "E4:E19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "not_blank": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장의 입력 칸에서 채점기가 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!D8 (부서는 있는데 담당이 빈 줄 수) — 판정이 「통과」다",
+      "sheet": "검사기",
+      "cell": "D8",
+      "expect": "통과"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "검사기!B9 (중복 줄 수(일자+부서+금액이 같은 줄)) — 값이 수식이다(「수식으로」를 붙였나)",
+      "sheet": "검사기",
+      "cell": "B9"
+    },
+    {
+      "type": "cell_is_constant",
+      "what": "검사기!C9 (중복 줄 수(일자+부서+금액이 같은 줄)) — 기준이 수식이 아니라 손으로 적은 숫자다",
+      "sheet": "검사기",
+      "cell": "C9"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!B9 (중복 줄 수(일자+부서+금액이 같은 줄)) — 값이 맞다",
+      "sheet": "검사기",
+      "cell": "B9",
+      "expect": 0,
+      "source_note": "원본 대장에서 일자·부서·금액이 같은 줄을 _expected.py 가 따로 센 값(0)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!C9 (중복 줄 수(일자+부서+금액이 같은 줄)) — 기준이 지금 값과 같다",
+      "sheet": "검사기",
+      "cell": "C9",
+      "expect": 0,
+      "source_note": "원본 대장에서 일자·부서·금액이 같은 줄을 _expected.py 가 따로 센 값(0)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!D9 (중복 줄 수(일자+부서+금액이 같은 줄)) — 판정이 「통과」다",
+      "sheet": "검사기",
+      "cell": "D9",
+      "expect": "통과"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "사본의 대장 시트(A1:F19)는 한 칸도 바뀌지 않았다",
+      "sheet": "대장",
+      "range": "A1:F19",
+      "source": "practice/부서 관리대장.xlsx"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 의 원본 「부서 관리대장.xlsx」는 처음 받은 그대로다",
+      "file": "practice/부서 관리대장.xlsx"
+    }
+  ],
+  "checklist": [
+    "검사기 시트의 열 너비가 넓어서 값이 ##### 없이 다 보인다",
+    "대장 금액 하나를 잠깐 바꿔 보았을 때 금액 총합 줄의 판정이 「확인」으로 바뀌었다(확인 뒤 되돌렸다)"
+  ]
+}

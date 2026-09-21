@@ -1,0 +1,64 @@
+{
+  "id": "15-02",
+  "title": "경고를 끄지 않는 월말마감으로 다시 쓰기",
+  "chapter": "15장 15.4 지우고 저장하는 줄만 따로 확인받기",
+  "mode": "auto",
+  "file_kind": "text",
+  "start_file": "practice/부서 관리대장.xlsm",
+  "submit_file": "월말마감_고침.bas",
+  "checks": [
+    {
+      "type": "text_contains",
+      "what": "고친 모듈에 Sub 월말마감 이 있다",
+      "pattern": "^[ \\t]*(?:(?:Public|Private)[ \\t]+)?Sub[ \\t]+월말마감[ \\t]*\\(",
+      "ignore_comments": true,
+      "fail_hint": "Sub 월말마감() 줄이 없습니다. 위험매크로 모듈을 내보냈는지 보세요."
+    },
+    {
+      "type": "text_absent",
+      "what": "경고를 끄는 줄(DisplayAlerts = False)이 없다",
+      "pattern": "DisplayAlerts[ \\t]*=[ \\t]*False",
+      "ignore_comments": true
+    },
+    {
+      "type": "text_contains",
+      "what": "묻는 창(MsgBox … vbYesNo)이 있다",
+      "pattern": "MsgBox[^\\n]*vbYesNo",
+      "ignore_comments": true,
+      "fail_hint": "MsgBox … vbYesNo 로 묻는 줄이 없습니다."
+    },
+    {
+      "type": "text_absent",
+      "what": "지우는 줄(.Delete)이 묻는 줄보다 뒤에 있다",
+      "pattern": "\\A(?:(?!vbYesNo)[\\s\\S])*\\.Delete\\b",
+      "ignore_comments": true,
+      "fail_hint": "묻는 줄(vbYesNo)보다 앞에 .Delete 가 있습니다. 지우기 전에 먼저 물어야 합니다."
+    },
+    {
+      "type": "text_absent",
+      "what": "파일을 지우는 줄(Kill)이 있다면 그 앞에 묻는 줄이 있다",
+      "pattern": "\\A(?:(?!vbYesNo)[\\s\\S])*\\bKill\\b",
+      "ignore_comments": true,
+      "fail_hint": "묻는 줄(vbYesNo)보다 앞에 Kill 이 있습니다."
+    },
+    {
+      "type": "text_contains",
+      "what": "오류가 나도 끝을 처리하는 On Error GoTo 가 있다",
+      "pattern": "On[ \\t]+Error[ \\t]+GoTo\\b",
+      "ignore_comments": true,
+      "fail_hint": "On Error GoTo 가 없습니다(④ 오류가 나도 설정이 원래대로)."
+    },
+    {
+      "type": "text_absent",
+      "what": "첫 Sub 앞에 무엇을 하는 매크로인지 적은 주석이 있다",
+      "pattern": "\\A(?:(?![ \\t]*')[^\\n]*\\n)*[ \\t]*(?:(?:Public|Private)[ \\t]+)?Sub\\b",
+      "ignore_comments": false,
+      "fail_hint": "첫 Sub 앞에 주석 줄이 하나도 없습니다(① 맨 위에 무엇을 하는 매크로인지)."
+    }
+  ],
+  "checklist": [
+    "시킬 말마다 「실행하지 마」를 붙였고, 월말마감을 한 번도 돌리지 않았다",
+    "고치기 전에 원본을 남겼다(다른 모듈에)",
+    "「DisplayAlerts 를 다시 켜는지, 중간에 오류가 나면 어떻게 되는지」를 먼저 물어 답을 받았다"
+  ]
+}

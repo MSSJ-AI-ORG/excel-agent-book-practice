@@ -1,0 +1,125 @@
+{
+  "id": "17-01",
+  "title": "판단하지 말고 세기만 하기",
+  "chapter": "17장 17.1 내 코드에서 되풀이되는 방식 찾아내기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "16-01 의 코드모음 폴더",
+  "submit_file": "17-01_버릇세기.xlsx",
+  "checks": [
+    {
+      "type": "sheet_exists",
+      "what": "「세기」 시트가 있다",
+      "sheet": "세기"
+    },
+    {
+      "type": "cell_equals",
+      "what": "세기!B1 — 모듈 수",
+      "sheet": "세기",
+      "cell": "B1",
+      "expect": 4,
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/17-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "세기!B2 — 프로시저 수",
+      "sheet": "세기",
+      "cell": "B2",
+      "expect": 6,
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/17-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "세기!B3 — Option Explicit 쓴 모듈 수",
+      "sheet": "세기",
+      "cell": "B3",
+      "expect": 4,
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/17-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "세기!B4 — On Error 쓴 모듈 수",
+      "sheet": "세기",
+      "cell": "B4",
+      "expect": 0,
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/17-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "세기!A7 — 1번째 모듈 이름(가나다순)",
+      "sheet": "세기",
+      "cell": "A7",
+      "expect": "기록매크로",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/17-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "세기!B7 — 기록매크로 모듈의 주석 줄 비율(±1%p)",
+      "sheet": "세기",
+      "cell": "B7",
+      "expect": 0.24,
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/17-01/_expected.py)",
+      "tolerance": 0.01
+    },
+    {
+      "type": "cell_equals",
+      "what": "세기!A8 — 2번째 모듈 이름(가나다순)",
+      "sheet": "세기",
+      "cell": "A8",
+      "expect": "깨진매크로",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/17-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "세기!B8 — 깨진매크로 모듈의 주석 줄 비율(±1%p)",
+      "sheet": "세기",
+      "cell": "B8",
+      "expect": 0.043478,
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/17-01/_expected.py)",
+      "tolerance": 0.01
+    },
+    {
+      "type": "cell_equals",
+      "what": "세기!A9 — 3번째 모듈 이름(가나다순)",
+      "sheet": "세기",
+      "cell": "A9",
+      "expect": "위험매크로",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/17-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "세기!B9 — 위험매크로 모듈의 주석 줄 비율(±1%p)",
+      "sheet": "세기",
+      "cell": "B9",
+      "expect": 0.076923,
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/17-01/_expected.py)",
+      "tolerance": 0.01
+    },
+    {
+      "type": "cell_equals",
+      "what": "세기!A10 — 4번째 모듈 이름(가나다순)",
+      "sheet": "세기",
+      "cell": "A10",
+      "expect": "집계매크로",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/17-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "세기!B10 — 집계매크로 모듈의 주석 줄 비율(±1%p)",
+      "sheet": "세기",
+      "cell": "B10",
+      "expect": 0.085714,
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/17-01/_expected.py)",
+      "tolerance": 0.01
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 폴더의 원본 「부서 관리대장.xlsm」은 처음 받은 그대로다",
+      "file": "practice/부서 관리대장.xlsm"
+    }
+  ],
+  "checklist": [
+    "받은 답에 「이렇게 고치세요」 같은 판단이 섞이지 않았다(「세기만 하고 판단은 하지 마」를 붙였다)",
+    "주석 비율을 «주석 줄 ÷ 빈 줄을 뺀 전체 줄»로 셌다는 것을 답에서 확인했다"
+  ]
+}

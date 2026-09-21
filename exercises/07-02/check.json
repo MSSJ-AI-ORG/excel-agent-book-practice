@@ -1,0 +1,79 @@
+{
+  "id": "07-02",
+  "title": "제목 병합은 풀고 채우지 않기, 글자 날짜는 날짜로",
+  "chapter": "7장 7.1 병합된 셀 풀고 값 채우기 · 7.2 문자로 들어간 날짜·숫자 되돌리기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/부서 관리대장.xlsx",
+  "submit_file": "07-02_날짜.xlsx",
+  "checks": [
+    {
+      "type": "range_same_as_source",
+      "what": "대장 1·2행 — 제목은 A1·A2 한 칸에만 있고, 옆 칸은 비어 있다(채우지 않았다)",
+      "sheet": "대장",
+      "range": "A1:F2",
+      "source": "practice/부서 관리대장.xlsx"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "대장 B:F열은 그대로다",
+      "sheet": "대장",
+      "range": "B3:F19",
+      "source": "practice/부서 관리대장.xlsx"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!A3 머리글은 그대로다",
+      "sheet": "대장",
+      "cell": "A3",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "cell",
+        "cell": "A3"
+      }
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!A12 — 비어 있던 줄은 그대로 비어 있다",
+      "sheet": "대장",
+      "cell": "A12",
+      "expect": ""
+    },
+    {
+      "type": "sheet_exists",
+      "what": "「날짜검산」 시트가 있다",
+      "sheet": "날짜검산"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "날짜검산!B1 — 날짜로 읽히는 칸 수를 수식으로 센다",
+      "sheet": "날짜검산",
+      "cell": "B1"
+    },
+    {
+      "type": "cell_equals",
+      "what": "날짜검산!B1 — A4:A19 에서 날짜로 읽히는 칸 수 = 날짜가 적혀 있던 칸 수",
+      "sheet": "날짜검산",
+      "cell": "B1",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "count",
+        "range": "A4:A19"
+      },
+      "source_note": "원본 대장 A4:A19 에서 글자가 적힌 칸을 채점기가 직접 센 값 — 이 칸이 모두 날짜로 읽을 수 있는 글자라는 것은 _expected.py 가 확인했다"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 폴더의 원본 「부서 관리대장.xlsx」는 처음 받은 그대로다",
+      "file": "practice/부서 관리대장.xlsx"
+    }
+  ],
+  "checklist": [
+    "대장 A1 을 눌렀을 때 A1 한 칸만 선택된다(병합이 풀렸다). A2 도 같다",
+    "A4:A19 의 날짜가 칸 오른쪽에 붙고, 원래 글자와 같은 날짜다(예: 「2026.01.22」 → 2026-01-22)",
+    "점으로 찍은 날짜를 바꾼 건수(2건)를 따로 받았다",
+    "날짜로 바꿀 수 없는 값이 있으면 고치지 않고 행 번호와 원래 값만 목록으로 받았다(이 파일에는 없다는 답)"
+  ]
+}

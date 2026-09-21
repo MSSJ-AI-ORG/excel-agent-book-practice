@@ -1,0 +1,266 @@
+{
+  "id": "P5-01",
+  "title": "매크로 목록에 규칙 판(현행·구판)까지 달아 두기",
+  "chapter": "5부 종합 — 16.4 · 18.4 규칙이 바뀌면 옛 코드도 같이 고치기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "16-02 · 18-01 결과",
+  "submit_file": "P5-01_매크로목록.xlsx",
+  "checks": [
+    {
+      "type": "sheet_exists",
+      "what": "「매크로목록」 시트가 있다",
+      "sheet": "매크로목록"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!A2 — 1번째 줄의 파일",
+      "sheet": "매크로목록",
+      "cell": "A2",
+      "expect": "집계매크로.bas",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!B2 — 1번째 줄의 프로시저",
+      "sheet": "매크로목록",
+      "cell": "B2",
+      "expect": "공백무시합계",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!C2 — 1번째 줄의 종류",
+      "sheet": "매크로목록",
+      "cell": "C2",
+      "expect": "Function",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!F2 — 1번째 줄의 호출됨",
+      "sheet": "매크로목록",
+      "cell": "F2",
+      "expect": "아니오",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!I2 — 1번째 줄의 규칙 판",
+      "sheet": "매크로목록",
+      "cell": "I2",
+      "expect": "현행",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!A3 — 2번째 줄의 파일",
+      "sheet": "매크로목록",
+      "cell": "A3",
+      "expect": "기록매크로.bas",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!B3 — 2번째 줄의 프로시저",
+      "sheet": "매크로목록",
+      "cell": "B3",
+      "expect": "매크로1",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!C3 — 2번째 줄의 종류",
+      "sheet": "매크로목록",
+      "cell": "C3",
+      "expect": "Sub",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!F3 — 2번째 줄의 호출됨",
+      "sheet": "매크로목록",
+      "cell": "F3",
+      "expect": "아니오",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!I3 — 2번째 줄의 규칙 판",
+      "sheet": "매크로목록",
+      "cell": "I3",
+      "expect": "구판",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!A4 — 3번째 줄의 파일",
+      "sheet": "매크로목록",
+      "cell": "A4",
+      "expect": "집계매크로.bas",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!B4 — 3번째 줄의 프로시저",
+      "sheet": "매크로목록",
+      "cell": "B4",
+      "expect": "부서별집계",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!C4 — 3번째 줄의 종류",
+      "sheet": "매크로목록",
+      "cell": "C4",
+      "expect": "Sub",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!F4 — 3번째 줄의 호출됨",
+      "sheet": "매크로목록",
+      "cell": "F4",
+      "expect": "아니오",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!I4 — 3번째 줄의 규칙 판",
+      "sheet": "매크로목록",
+      "cell": "I4",
+      "expect": "현행",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!A5 — 4번째 줄의 파일",
+      "sheet": "매크로목록",
+      "cell": "A5",
+      "expect": "깨진매크로.bas",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!B5 — 4번째 줄의 프로시저",
+      "sheet": "매크로목록",
+      "cell": "B5",
+      "expect": "요약만들기",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!C5 — 4번째 줄의 종류",
+      "sheet": "매크로목록",
+      "cell": "C5",
+      "expect": "Sub",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!F5 — 4번째 줄의 호출됨",
+      "sheet": "매크로목록",
+      "cell": "F5",
+      "expect": "아니오",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!I5 — 4번째 줄의 규칙 판",
+      "sheet": "매크로목록",
+      "cell": "I5",
+      "expect": "구판",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!A6 — 5번째 줄의 파일",
+      "sheet": "매크로목록",
+      "cell": "A6",
+      "expect": "위험매크로.bas",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!B6 — 5번째 줄의 프로시저",
+      "sheet": "매크로목록",
+      "cell": "B6",
+      "expect": "월말마감",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!C6 — 5번째 줄의 종류",
+      "sheet": "매크로목록",
+      "cell": "C6",
+      "expect": "Sub",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!F6 — 5번째 줄의 호출됨",
+      "sheet": "매크로목록",
+      "cell": "F6",
+      "expect": "아니오",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!I6 — 5번째 줄의 규칙 판",
+      "sheet": "매크로목록",
+      "cell": "I6",
+      "expect": "현행",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!A7 — 6번째 줄의 파일",
+      "sheet": "매크로목록",
+      "cell": "A7",
+      "expect": "깨진매크로.bas",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!B7 — 6번째 줄의 프로시저",
+      "sheet": "매크로목록",
+      "cell": "B7",
+      "expect": "월말정리",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!C7 — 6번째 줄의 종류",
+      "sheet": "매크로목록",
+      "cell": "C7",
+      "expect": "Sub",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!F7 — 6번째 줄의 호출됨",
+      "sheet": "매크로목록",
+      "cell": "F7",
+      "expect": "아니오",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!I7 — 6번째 줄의 규칙 판",
+      "sheet": "매크로목록",
+      "cell": "I7",
+      "expect": "구판",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/P5-01/_expected.py)"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 폴더의 원본 「부서 관리대장.xlsm」은 처음 받은 그대로다",
+      "file": "practice/부서 관리대장.xlsm"
+    }
+  ],
+  "checklist": [
+    "코드규칙.md 맨 아래 「판 이력」에 언제 · 무엇이 바뀌었나 · 왜 바뀌었나 칸이 있다",
+    "구판으로 표시한 코드를 고치지 않았다(표시만 했다)",
+    "G열(상태) 목록 유효성 검사와 H열(근거)이 16-02 그대로 살아 있다"
+  ]
+}

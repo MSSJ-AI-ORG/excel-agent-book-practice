@@ -1,0 +1,115 @@
+{
+  "id": "03-02",
+  "title": "정렬한 뒤 1행을 보고, 필터는 풀어서 넘기기",
+  "chapter": "3장 3.4 정렬·필터를 말로 걸고 풀기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/이번 달 매출.xlsx",
+  "submit_file": "03-02_정렬.xlsx",
+  "_note": "정렬 순서는 채점기에 아직 정렬을 보는 규칙이 없어 줄마다 값으로 박았다. 박은 값이 원본을 정렬한 결과인지는 _expected.py 가 확인한다.",
+  "checks": [
+    {
+      "type": "range_same_as_source",
+      "what": "1행 머리글(A1:E1)이 원본 그대로 1행에 있다(「정렬한 뒤에는 1행을 본다」)",
+      "sheet": "매출",
+      "range": "A1:E1",
+      "source": "practice/이번 달 매출.xlsx"
+    },
+
+    { "type": "cell_equals", "what": "2행 담당자", "sheet": "매출", "cell": "A2", "expect": "강민서" },
+    { "type": "cell_equals", "what": "2행 품목", "sheet": "매출", "cell": "B2", "expect": "노트북" },
+    { "type": "cell_equals", "what": "2행 금액", "sheet": "매출", "cell": "E2", "expect": 2580000 },
+    { "type": "cell_equals", "what": "3행 담당자", "sheet": "매출", "cell": "A3", "expect": "강민서" },
+    { "type": "cell_equals", "what": "3행 품목", "sheet": "매출", "cell": "B3", "expect": "모니터" },
+    { "type": "cell_equals", "what": "3행 금액", "sheet": "매출", "cell": "E3", "expect": 1550000 },
+    { "type": "cell_equals", "what": "4행 담당자", "sheet": "매출", "cell": "A4", "expect": "서지호" },
+    { "type": "cell_equals", "what": "4행 품목", "sheet": "매출", "cell": "B4", "expect": "노트북" },
+    { "type": "cell_equals", "what": "4행 금액", "sheet": "매출", "cell": "E4", "expect": 1290000 },
+    { "type": "cell_equals", "what": "5행 담당자", "sheet": "매출", "cell": "A5", "expect": "서지호" },
+    { "type": "cell_equals", "what": "5행 품목", "sheet": "매출", "cell": "B5", "expect": "마우스" },
+    { "type": "cell_equals", "what": "5행 금액", "sheet": "매출", "cell": "E5", "expect": 640000 },
+    { "type": "cell_equals", "what": "6행 담당자", "sheet": "매출", "cell": "A6", "expect": "서지호" },
+    { "type": "cell_equals", "what": "6행 품목", "sheet": "매출", "cell": "B6", "expect": "모니터" },
+    { "type": "cell_equals", "what": "6행 금액", "sheet": "매출", "cell": "E6", "expect": 620000 },
+    { "type": "cell_equals", "what": "7행 담당자", "sheet": "매출", "cell": "A7", "expect": "이현우" },
+    { "type": "cell_equals", "what": "7행 품목", "sheet": "매출", "cell": "B7", "expect": "노트북" },
+    { "type": "cell_equals", "what": "7행 금액", "sheet": "매출", "cell": "E7", "expect": 3870000 },
+    { "type": "cell_equals", "what": "8행 담당자", "sheet": "매출", "cell": "A8", "expect": "이현우" },
+    { "type": "cell_equals", "what": "8행 품목", "sheet": "매출", "cell": "B8", "expect": "키보드" },
+    { "type": "cell_equals", "what": "8행 금액", "sheet": "매출", "cell": "E8", "expect": 1068000 },
+    { "type": "cell_equals", "what": "9행 담당자", "sheet": "매출", "cell": "A9", "expect": "이현우" },
+    { "type": "cell_equals", "what": "9행 품목", "sheet": "매출", "cell": "B9", "expect": "마우스" },
+    { "type": "cell_equals", "what": "9행 금액", "sheet": "매출", "cell": "E9", "expect": 256000 },
+    { "type": "cell_equals", "what": "10행 담당자", "sheet": "매출", "cell": "A10", "expect": "한소율" },
+    { "type": "cell_equals", "what": "10행 품목", "sheet": "매출", "cell": "B10", "expect": "모니터" },
+    { "type": "cell_equals", "what": "10행 금액", "sheet": "매출", "cell": "E10", "expect": 930000 },
+    { "type": "cell_equals", "what": "11행 담당자", "sheet": "매출", "cell": "A11", "expect": "한소율" },
+    { "type": "cell_equals", "what": "11행 품목", "sheet": "매출", "cell": "B11", "expect": "키보드" },
+    { "type": "cell_equals", "what": "11행 금액", "sheet": "매출", "cell": "E11", "expect": 534000 },
+
+    {
+      "type": "range_same_as_source",
+      "what": "합계 칸(D12:E12)은 자리도 수식도 원본 그대로다",
+      "sheet": "매출",
+      "range": "D12:E12",
+      "source": "practice/이번 달 매출.xlsx"
+    },
+    {
+      "type": "cell_equals",
+      "what": "합계 칸(E12) 값이 전체 금액 합과 같다",
+      "sheet": "매출",
+      "cell": "E12",
+      "expect_from": { "source": "practice/이번 달 매출.xlsx", "sheet": "매출", "op": "sumproduct", "ranges": ["C2:C11", "D2:D11"] },
+      "source_note": "원본의 수량×단가를 행마다 곱해 채점기가 직접 더한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "G1 — 필터로 보이던 이현우 행들의 금액 합",
+      "sheet": "매출",
+      "cell": "G1",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "sumproduct",
+        "ranges": ["C2:C11", "D2:D11"],
+        "where": [ { "range": "A2:A11", "equals": "이현우" } ]
+      },
+      "source_note": "원본에서 담당자가 이현우인 줄만 수량×단가를 곱해 채점기가 더한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "G2 — 필터를 무시한 전체 금액 합",
+      "sheet": "매출",
+      "cell": "G2",
+      "expect_from": { "source": "practice/이번 달 매출.xlsx", "sheet": "매출", "op": "sumproduct", "ranges": ["C2:C11", "D2:D11"] },
+      "source_note": "원본의 수량×단가를 행마다 곱해 채점기가 직접 더한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "G3 — 필터를 풀 때 숨어 있던 행 수",
+      "sheet": "매출",
+      "cell": "G3",
+      "expect_from": { "calc": {
+        "expr": "all - kept",
+        "vars": {
+          "all": { "source": "practice/이번 달 매출.xlsx", "sheet": "매출", "op": "count", "range": "A2:A11" },
+          "kept": {
+            "source": "practice/이번 달 매출.xlsx", "sheet": "매출", "op": "count", "range": "A2:A11",
+            "where": [ { "range": "A2:A11", "equals": "이현우" } ]
+          }
+        }
+      } },
+      "source_note": "원본 데이터 행 수에서 담당자가 이현우인 줄 수를 채점기가 뺀 값"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 의 원본 「이번 달 매출.xlsx」는 처음 받은 그대로다",
+      "file": "practice/이번 달 매출.xlsx"
+    }
+  ],
+  "checklist": [
+    "정렬한 뒤 1행에 「담당자 / 품목」 머리글이 그대로 있는 것을 눈으로 보았다",
+    "필터를 전부 풀었다 — 데이터 탭의 「필터」 단추가 꺼져 있고, 행 번호가 1부터 12까지 빠짐없이 이어진다. 채점기는 아직 숨은 행을 보지 못합니다",
+    "G1·G2 를 받았을 때 두 값이 다르다는 것과, 어느 쪽을 원했는지는 시킨 사람만 안다는 것을 확인했다"
+  ]
+}

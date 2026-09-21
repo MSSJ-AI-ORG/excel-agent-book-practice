@@ -1,0 +1,545 @@
+{
+  "id": "P4-01",
+  "title": "멈췄던 월말정리를 살려 두 번 돌리고 수식으로 대조하기",
+  "chapter": "4부 종합 — 13.2 · 13.4 · 14.1",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/부서 관리대장.xlsm",
+  "submit_file": "P4-01_월말정리.xlsm",
+  "checks": [
+    {
+      "type": "cell_equals",
+      "what": "대장!G3 — 「점검」 열 머리글",
+      "sheet": "대장",
+      "cell": "G3",
+      "expect": "점검"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!G4 — 매크로가 적은 점검 표시",
+      "sheet": "대장",
+      "cell": "G4",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(d > 3000000, '확인', '')",
+          "vars": {
+            "d": {
+              "source": "practice/부서 관리대장.xlsm",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D4"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장 D열 금액이 3,000,000 을 넘으면 「확인」, 아니면 빈칸 — 원래 코드의 조건 그대로 채점기가 판정"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!G5 — 매크로가 적은 점검 표시",
+      "sheet": "대장",
+      "cell": "G5",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(d > 3000000, '확인', '')",
+          "vars": {
+            "d": {
+              "source": "practice/부서 관리대장.xlsm",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D5:D5"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장 D열 금액이 3,000,000 을 넘으면 「확인」, 아니면 빈칸 — 원래 코드의 조건 그대로 채점기가 판정"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!G6 — 매크로가 적은 점검 표시",
+      "sheet": "대장",
+      "cell": "G6",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(d > 3000000, '확인', '')",
+          "vars": {
+            "d": {
+              "source": "practice/부서 관리대장.xlsm",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D6:D6"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장 D열 금액이 3,000,000 을 넘으면 「확인」, 아니면 빈칸 — 원래 코드의 조건 그대로 채점기가 판정"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!G7 — 매크로가 적은 점검 표시",
+      "sheet": "대장",
+      "cell": "G7",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(d > 3000000, '확인', '')",
+          "vars": {
+            "d": {
+              "source": "practice/부서 관리대장.xlsm",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D7:D7"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장 D열 금액이 3,000,000 을 넘으면 「확인」, 아니면 빈칸 — 원래 코드의 조건 그대로 채점기가 판정"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!G8 — 매크로가 적은 점검 표시",
+      "sheet": "대장",
+      "cell": "G8",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(d > 3000000, '확인', '')",
+          "vars": {
+            "d": {
+              "source": "practice/부서 관리대장.xlsm",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D8:D8"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장 D열 금액이 3,000,000 을 넘으면 「확인」, 아니면 빈칸 — 원래 코드의 조건 그대로 채점기가 판정"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!G9 — 매크로가 적은 점검 표시",
+      "sheet": "대장",
+      "cell": "G9",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(d > 3000000, '확인', '')",
+          "vars": {
+            "d": {
+              "source": "practice/부서 관리대장.xlsm",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D9:D9"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장 D열 금액이 3,000,000 을 넘으면 「확인」, 아니면 빈칸 — 원래 코드의 조건 그대로 채점기가 판정"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!G10 — 매크로가 적은 점검 표시",
+      "sheet": "대장",
+      "cell": "G10",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(d > 3000000, '확인', '')",
+          "vars": {
+            "d": {
+              "source": "practice/부서 관리대장.xlsm",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D10:D10"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장 D열 금액이 3,000,000 을 넘으면 「확인」, 아니면 빈칸 — 원래 코드의 조건 그대로 채점기가 판정"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!G11 — 매크로가 적은 점검 표시",
+      "sheet": "대장",
+      "cell": "G11",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(d > 3000000, '확인', '')",
+          "vars": {
+            "d": {
+              "source": "practice/부서 관리대장.xlsm",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D11:D11"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장 D열 금액이 3,000,000 을 넘으면 「확인」, 아니면 빈칸 — 원래 코드의 조건 그대로 채점기가 판정"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!G12 — 매크로가 적은 점검 표시",
+      "sheet": "대장",
+      "cell": "G12",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(d > 3000000, '확인', '')",
+          "vars": {
+            "d": {
+              "source": "practice/부서 관리대장.xlsm",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D12:D12"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장 D열 금액이 3,000,000 을 넘으면 「확인」, 아니면 빈칸 — 원래 코드의 조건 그대로 채점기가 판정"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!G13 — 매크로가 적은 점검 표시",
+      "sheet": "대장",
+      "cell": "G13",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(d > 3000000, '확인', '')",
+          "vars": {
+            "d": {
+              "source": "practice/부서 관리대장.xlsm",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D13:D13"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장 D열 금액이 3,000,000 을 넘으면 「확인」, 아니면 빈칸 — 원래 코드의 조건 그대로 채점기가 판정"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!G14 — 매크로가 적은 점검 표시",
+      "sheet": "대장",
+      "cell": "G14",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(d > 3000000, '확인', '')",
+          "vars": {
+            "d": {
+              "source": "practice/부서 관리대장.xlsm",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D14:D14"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장 D열 금액이 3,000,000 을 넘으면 「확인」, 아니면 빈칸 — 원래 코드의 조건 그대로 채점기가 판정"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!G15 — 매크로가 적은 점검 표시",
+      "sheet": "대장",
+      "cell": "G15",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(d > 3000000, '확인', '')",
+          "vars": {
+            "d": {
+              "source": "practice/부서 관리대장.xlsm",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D15:D15"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장 D열 금액이 3,000,000 을 넘으면 「확인」, 아니면 빈칸 — 원래 코드의 조건 그대로 채점기가 판정"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!G16 — 매크로가 적은 점검 표시",
+      "sheet": "대장",
+      "cell": "G16",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(d > 3000000, '확인', '')",
+          "vars": {
+            "d": {
+              "source": "practice/부서 관리대장.xlsm",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D16:D16"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장 D열 금액이 3,000,000 을 넘으면 「확인」, 아니면 빈칸 — 원래 코드의 조건 그대로 채점기가 판정"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!G17 — 매크로가 적은 점검 표시",
+      "sheet": "대장",
+      "cell": "G17",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(d > 3000000, '확인', '')",
+          "vars": {
+            "d": {
+              "source": "practice/부서 관리대장.xlsm",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D17:D17"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장 D열 금액이 3,000,000 을 넘으면 「확인」, 아니면 빈칸 — 원래 코드의 조건 그대로 채점기가 판정"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!G18 — 매크로가 적은 점검 표시",
+      "sheet": "대장",
+      "cell": "G18",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(d > 3000000, '확인', '')",
+          "vars": {
+            "d": {
+              "source": "practice/부서 관리대장.xlsm",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D18:D18"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장 D열 금액이 3,000,000 을 넘으면 「확인」, 아니면 빈칸 — 원래 코드의 조건 그대로 채점기가 판정"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!G19 — 매크로가 적은 점검 표시",
+      "sheet": "대장",
+      "cell": "G19",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(d > 3000000, '확인', '')",
+          "vars": {
+            "d": {
+              "source": "practice/부서 관리대장.xlsm",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D19:D19"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장 D열 금액이 3,000,000 을 넘으면 「확인」, 아니면 빈칸 — 원래 코드의 조건 그대로 채점기가 판정"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "대장!H4 는 수식이다",
+      "sheet": "대장",
+      "cell": "H4"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "대장!H5 는 수식이다",
+      "sheet": "대장",
+      "cell": "H5"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "대장!H6 는 수식이다",
+      "sheet": "대장",
+      "cell": "H6"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "대장!H7 는 수식이다",
+      "sheet": "대장",
+      "cell": "H7"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "대장!H8 는 수식이다",
+      "sheet": "대장",
+      "cell": "H8"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "대장!H9 는 수식이다",
+      "sheet": "대장",
+      "cell": "H9"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "대장!H10 는 수식이다",
+      "sheet": "대장",
+      "cell": "H10"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "대장!H11 는 수식이다",
+      "sheet": "대장",
+      "cell": "H11"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "대장!H12 는 수식이다",
+      "sheet": "대장",
+      "cell": "H12"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "대장!H13 는 수식이다",
+      "sheet": "대장",
+      "cell": "H13"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "대장!H14 는 수식이다",
+      "sheet": "대장",
+      "cell": "H14"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "대장!H15 는 수식이다",
+      "sheet": "대장",
+      "cell": "H15"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "대장!H16 는 수식이다",
+      "sheet": "대장",
+      "cell": "H16"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "대장!H17 는 수식이다",
+      "sheet": "대장",
+      "cell": "H17"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "대장!H18 는 수식이다",
+      "sheet": "대장",
+      "cell": "H18"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "대장!H19 는 수식이다",
+      "sheet": "대장",
+      "cell": "H19"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!H6 수식의 값이 G6 와 같다",
+      "sheet": "대장",
+      "cell": "H6",
+      "expect_from": {
+        "source": "@submitted",
+        "sheet": "대장",
+        "op": "cell",
+        "cell": "G6"
+      },
+      "source_note": "제출한 파일의 G열 값과 댄 것"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!H9 수식의 값이 G9 와 같다",
+      "sheet": "대장",
+      "cell": "H9",
+      "expect_from": {
+        "source": "@submitted",
+        "sheet": "대장",
+        "op": "cell",
+        "cell": "G9"
+      },
+      "source_note": "제출한 파일의 G열 값과 댄 것"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!H13 수식의 값이 G13 와 같다",
+      "sheet": "대장",
+      "cell": "H13",
+      "expect_from": {
+        "source": "@submitted",
+        "sheet": "대장",
+        "op": "cell",
+        "cell": "G13"
+      },
+      "source_note": "제출한 파일의 G열 값과 댄 것"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!H18 수식의 값이 G18 와 같다",
+      "sheet": "대장",
+      "cell": "H18",
+      "expect_from": {
+        "source": "@submitted",
+        "sheet": "대장",
+        "op": "cell",
+        "cell": "G18"
+      },
+      "source_note": "제출한 파일의 G열 값과 댄 것"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "대장 F4:F19(비고)가 원본 그대로다 — 「특판」 같은 기존 메모가 살아 있다",
+      "sheet": "대장",
+      "range": "F4:F19",
+      "source": "practice/부서 관리대장.xlsm"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "대장 A1:E19 가 원본 그대로다",
+      "sheet": "대장",
+      "range": "A1:E19",
+      "source": "practice/부서 관리대장.xlsm"
+    },
+    {
+      "type": "sheet_exists",
+      "what": "「대장」 시트가 그대로 있다(아무것도 지워지지 않았다)",
+      "sheet": "대장"
+    },
+    {
+      "type": "sheet_exists",
+      "what": "「기준」 시트가 그대로 있다(아무것도 지워지지 않았다)",
+      "sheet": "기준"
+    },
+    {
+      "type": "sheet_exists",
+      "what": "「정산」 시트가 그대로 있다(아무것도 지워지지 않았다)",
+      "sheet": "정산"
+    },
+    {
+      "type": "sheet_exists",
+      "what": "「월별」 시트가 그대로 있다(아무것도 지워지지 않았다)",
+      "sheet": "월별"
+    },
+    {
+      "type": "sheet_exists",
+      "what": "「담당자」 시트가 그대로 있다(아무것도 지워지지 않았다)",
+      "sheet": "담당자"
+    },
+    {
+      "type": "sheet_exists",
+      "what": "「백업_0402」 시트가 그대로 있다(아무것도 지워지지 않았다)",
+      "sheet": "백업_0402"
+    },
+    {
+      "type": "sheet_exists",
+      "what": "「읽어주세요」 시트가 그대로 있다(아무것도 지워지지 않았다)",
+      "sheet": "읽어주세요"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 폴더의 원본 「부서 관리대장.xlsm」은 처음 받은 그대로다",
+      "file": "practice/부서 관리대장.xlsm"
+    }
+  ],
+  "checklist": [
+    "고친 매크로를 같은 사본에서 두 번 연달아 돌렸고, 첫 번째와 두 번째 결과가 같았다",
+    "G열이 비어 있는 줄은 H열 수식 결과도 비어 있다(채점기는 «확인»이 적힌 네 줄만 값을 댄다)",
+    "고친 매크로 맨 위에 언제 · 무엇이 깨져 있었나 · 무엇을 고쳤나 · 확인은 어떻게 했나를 적었다"
+  ]
+}

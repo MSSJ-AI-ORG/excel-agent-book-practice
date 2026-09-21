@@ -1,0 +1,164 @@
+{
+  "id": "25-02",
+  "title": "같아도 옮기지 않는 것 — 세지 못한 줄 경고",
+  "chapter": "25장 25.3 같아도 옮기지 않는 것",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "25-01 결과",
+  "submit_file": "25-02_경고.xlsx",
+  "checks": [
+    {
+      "type": "sheet_exists",
+      "what": "「대조」 시트가 있다",
+      "sheet": "대조"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!A11 = 「세지 못한 행 건수」",
+      "sheet": "대조",
+      "cell": "A11",
+      "expect": "세지 못한 행 건수"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!A12 = 「세지 못한 행 금액」",
+      "sheet": "대조",
+      "cell": "A12",
+      "expect": "세지 못한 행 금액"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "대조!B11 — 건수가 숫자가 아니라 수식이다(자료가 바뀌면 따라 바뀐다)",
+      "sheet": "대조",
+      "cell": "B11"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "대조!B12 — 금액이 숫자가 아니라 수식이다",
+      "sheet": "대조",
+      "cell": "B12"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!B11 — 세지 못한 행 건수가 맞다",
+      "sheet": "대조",
+      "cell": "B11",
+      "expect_from": {
+        "calc": {
+          "expr": "t - (a + b + c)",
+          "vars": {
+            "t": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19"
+            },
+            "a": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업2팀"
+                }
+              ]
+            },
+            "c": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업3팀"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장에서 부서는 적혀 있지만 정산 대상 세 이름과 정확히 같지 않은 줄을 채점기가 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!B12 — 세지 못한 행 금액이 맞다",
+      "sheet": "대조",
+      "cell": "B12",
+      "expect_from": {
+        "calc": {
+          "expr": "t - (a + b + c)",
+          "vars": {
+            "t": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19"
+            },
+            "a": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업2팀"
+                }
+              ]
+            },
+            "c": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업3팀"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "source_note": "그 줄들의 금액을 채점기가 원본 대장에서 직접 더한 값"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 의 원본 「부서 관리대장.xlsx」는 처음 받은 그대로다",
+      "file": "practice/부서 관리대장.xlsx"
+    }
+  ],
+  "checklist": [
+    "넘긴다 / 엑셀에 남긴다 표에 「부서 표기가 오기인지 실제 변경인지 가르는 일」이 남길 쪽에 있다",
+    "고장 진단 순서에 rules.json 이 나온다(경로·기준요율을 어디서 고치는지)",
+    "엑셀 원본을 지우지 않았다 — 넘긴 것은 «보는 일» 이다"
+  ]
+}

@@ -1,0 +1,426 @@
+{
+  "id": "06-02",
+  "title": "짧게 고친 수식을 옛 수식과 대조하고 검사기를 검사하기",
+  "chapter": "6장 6.3 뜻은 그대로 두고 수식 짧게 고치기 · 6.4 고친 수식이 옛 결과와 같은지 대조하기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/부서 관리대장.xlsx",
+  "submit_file": "06-02_대조.xlsx",
+  "checks": [
+    {
+      "type": "range_same_as_source",
+      "what": "정산 시트(D열 옛 수식 포함)는 그대로다(「정산 시트 D열은 건드리지 마」)",
+      "sheet": "정산",
+      "range": "A1:D7",
+      "source": "practice/부서 관리대장.xlsx"
+    },
+    {
+      "type": "sheet_exists",
+      "what": "「대조」 시트가 있다",
+      "sheet": "대조"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!B3 — 영업1팀 옛 수식 값",
+      "sheet": "대조",
+      "cell": "B3",
+      "expect_from": {
+        "calc": {
+          "expr": "round_excel(if_(s >= t, s*r + if_(n > 4, b, 0), s*r*0.5), -3)",
+          "vars": {
+            "s": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            },
+            "t": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "기준",
+              "op": "lookup",
+              "key_range": "A3:A5",
+              "return_range": "B3:B5",
+              "equals": "영업1팀"
+            },
+            "n": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "성과가산"
+            },
+            "r": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "기준요율"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장의 입력 칸(D열 금액·B열 부서)과 기준 시트·이름 정의에서 채점기가 정산 규칙대로 다시 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!B4 — 영업2팀 옛 수식 값",
+      "sheet": "대조",
+      "cell": "B4",
+      "expect_from": {
+        "calc": {
+          "expr": "round_excel(if_(s >= t, s*r + if_(n > 4, b, 0), s*r*0.5), -3)",
+          "vars": {
+            "s": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업2팀"
+                }
+              ]
+            },
+            "t": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "기준",
+              "op": "lookup",
+              "key_range": "A3:A5",
+              "return_range": "B3:B5",
+              "equals": "영업2팀"
+            },
+            "n": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업2팀"
+                }
+              ]
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "성과가산"
+            },
+            "r": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "기준요율"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장의 입력 칸(D열 금액·B열 부서)과 기준 시트·이름 정의에서 채점기가 정산 규칙대로 다시 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!B5 — 영업3팀 옛 수식 값",
+      "sheet": "대조",
+      "cell": "B5",
+      "expect_from": {
+        "calc": {
+          "expr": "round_excel(if_(s >= t, s*r + if_(n > 4, b, 0), s*r*0.5), -3)",
+          "vars": {
+            "s": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업3팀"
+                }
+              ]
+            },
+            "t": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "기준",
+              "op": "lookup",
+              "key_range": "A3:A5",
+              "return_range": "B3:B5",
+              "equals": "영업3팀"
+            },
+            "n": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업3팀"
+                }
+              ]
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "성과가산"
+            },
+            "r": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "기준요율"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장의 입력 칸(D열 금액·B열 부서)과 기준 시트·이름 정의에서 채점기가 정산 규칙대로 다시 계산한 값"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "대조!C3 — 영업1팀 새 수식이 수식으로 들어 있다",
+      "sheet": "대조",
+      "cell": "C3"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!C3 — 영업1팀 새 수식 값이 옛 규칙과 같다",
+      "sheet": "대조",
+      "cell": "C3",
+      "expect_from": {
+        "calc": {
+          "expr": "round_excel(if_(s >= t, s*r + if_(n > 4, b, 0), s*r*0.5), -3)",
+          "vars": {
+            "s": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            },
+            "t": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "기준",
+              "op": "lookup",
+              "key_range": "A3:A5",
+              "return_range": "B3:B5",
+              "equals": "영업1팀"
+            },
+            "n": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "성과가산"
+            },
+            "r": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "기준요율"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장의 입력 칸(D열 금액·B열 부서)과 기준 시트·이름 정의에서 채점기가 정산 규칙대로 다시 계산한 값"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "대조!C4 — 영업2팀 새 수식이 수식으로 들어 있다",
+      "sheet": "대조",
+      "cell": "C4"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!C4 — 영업2팀 새 수식 값이 옛 규칙과 같다",
+      "sheet": "대조",
+      "cell": "C4",
+      "expect_from": {
+        "calc": {
+          "expr": "round_excel(if_(s >= t, s*r + if_(n > 4, b, 0), s*r*0.5), -3)",
+          "vars": {
+            "s": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업2팀"
+                }
+              ]
+            },
+            "t": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "기준",
+              "op": "lookup",
+              "key_range": "A3:A5",
+              "return_range": "B3:B5",
+              "equals": "영업2팀"
+            },
+            "n": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업2팀"
+                }
+              ]
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "성과가산"
+            },
+            "r": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "기준요율"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장의 입력 칸(D열 금액·B열 부서)과 기준 시트·이름 정의에서 채점기가 정산 규칙대로 다시 계산한 값"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "대조!C5 — 영업3팀 새 수식이 수식으로 들어 있다",
+      "sheet": "대조",
+      "cell": "C5"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!C5 — 영업3팀 새 수식 값이 옛 규칙과 같다",
+      "sheet": "대조",
+      "cell": "C5",
+      "expect_from": {
+        "calc": {
+          "expr": "round_excel(if_(s >= t, s*r + if_(n > 4, b, 0), s*r*0.5), -3)",
+          "vars": {
+            "s": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업3팀"
+                }
+              ]
+            },
+            "t": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "기준",
+              "op": "lookup",
+              "key_range": "A3:A5",
+              "return_range": "B3:B5",
+              "equals": "영업3팀"
+            },
+            "n": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업3팀"
+                }
+              ]
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "성과가산"
+            },
+            "r": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "기준요율"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장의 입력 칸(D열 금액·B열 부서)과 기준 시트·이름 정의에서 채점기가 정산 규칙대로 다시 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!D3 — 영업1팀 차이가 0",
+      "sheet": "대조",
+      "cell": "D3",
+      "expect": 0
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!D4 — 영업2팀 차이가 0",
+      "sheet": "대조",
+      "cell": "D4",
+      "expect": 0
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!D5 — 영업3팀 차이가 0",
+      "sheet": "대조",
+      "cell": "D5",
+      "expect": 0
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "대조!G3 — 다른 행 수가 COUNTIF 수식이다",
+      "sheet": "대조",
+      "cell": "G3",
+      "functions": [
+        "COUNTIF"
+      ]
+    },
+    {
+      "type": "cell_equals",
+      "what": "대조!G3 — 다른 행 수가 0(되돌려 놓았다)",
+      "sheet": "대조",
+      "cell": "G3",
+      "expect": 0
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 폴더의 원본 「부서 관리대장.xlsx」는 처음 받은 그대로다",
+      "file": "practice/부서 관리대장.xlsx"
+    }
+  ],
+  "checklist": [
+    "대조!C3:C5 새 수식에는 IFERROR 가 없고, 정산!D3 옛 수식보다 짧다",
+    "대조!E3:E5(다른가)가 세 줄 모두 비어 있다",
+    "C4 의 *0.5 를 *0.6 으로 바꿨을 때 영업2팀 한 줄에만 「다름」이 떴고 다른 행 수가 1 이 됐다",
+    "*0.6 을 *0.5 로 되돌린 뒤 다른 행 수가 다시 0 이 됐다",
+    "다른 행 수 수식의 범위가 E5 에서 끝나지 않고 표 아래 새 줄까지 닿는다(예: E3:E100)"
+  ]
+}

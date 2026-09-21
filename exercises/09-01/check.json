@@ -1,0 +1,584 @@
+{
+  "id": "09-01",
+  "title": "「아래로 복사해도 항상 ~을 보게」를 말로 시키기",
+  "chapter": "9장 9.2 상대·절대 참조를 의도대로 고치기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/이번 달 매출.xlsx",
+  "submit_file": "09-01_참조.xlsx",
+  "checks": [
+    {
+      "type": "cell_is_formula",
+      "what": "매출!G2 가 수식이다",
+      "sheet": "매출",
+      "cell": "G2"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "매출!G11 이 수식이다(아래로 복사됐다)",
+      "sheet": "매출",
+      "cell": "G11"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "매출!H2 가 수식이다",
+      "sheet": "매출",
+      "cell": "H2"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "매출!H11 이 수식이다(아래로 복사됐다)",
+      "sheet": "매출",
+      "cell": "H11"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!K1 — 세율 10%",
+      "sheet": "매출",
+      "cell": "K1",
+      "expect": 0.1
+    },
+    {
+      "type": "cell_is_constant",
+      "what": "매출!K1 은 수식이 아니라 적어 둔 값이다",
+      "sheet": "매출",
+      "cell": "K1"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!G2 — 2행의 수량×단가",
+      "sheet": "매출",
+      "cell": "G2",
+      "expect_from": {
+        "calc": {
+          "expr": "c*d",
+          "vars": {
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C2"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D2"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 C2×D2 를 채점기가 직접 곱한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!G3 — 3행의 수량×단가",
+      "sheet": "매출",
+      "cell": "G3",
+      "expect_from": {
+        "calc": {
+          "expr": "c*d",
+          "vars": {
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C3"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D3"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 C3×D3 를 채점기가 직접 곱한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!G4 — 4행의 수량×단가",
+      "sheet": "매출",
+      "cell": "G4",
+      "expect_from": {
+        "calc": {
+          "expr": "c*d",
+          "vars": {
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C4"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D4"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 C4×D4 를 채점기가 직접 곱한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!G5 — 5행의 수량×단가",
+      "sheet": "매출",
+      "cell": "G5",
+      "expect_from": {
+        "calc": {
+          "expr": "c*d",
+          "vars": {
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C5"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D5"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 C5×D5 를 채점기가 직접 곱한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!G6 — 6행의 수량×단가",
+      "sheet": "매출",
+      "cell": "G6",
+      "expect_from": {
+        "calc": {
+          "expr": "c*d",
+          "vars": {
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C6"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D6"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 C6×D6 를 채점기가 직접 곱한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!G7 — 7행의 수량×단가",
+      "sheet": "매출",
+      "cell": "G7",
+      "expect_from": {
+        "calc": {
+          "expr": "c*d",
+          "vars": {
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C7"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D7"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 C7×D7 를 채점기가 직접 곱한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!G8 — 8행의 수량×단가",
+      "sheet": "매출",
+      "cell": "G8",
+      "expect_from": {
+        "calc": {
+          "expr": "c*d",
+          "vars": {
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C8"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D8"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 C8×D8 를 채점기가 직접 곱한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!G9 — 9행의 수량×단가",
+      "sheet": "매출",
+      "cell": "G9",
+      "expect_from": {
+        "calc": {
+          "expr": "c*d",
+          "vars": {
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C9"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D9"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 C9×D9 를 채점기가 직접 곱한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!G10 — 10행의 수량×단가",
+      "sheet": "매출",
+      "cell": "G10",
+      "expect_from": {
+        "calc": {
+          "expr": "c*d",
+          "vars": {
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C10"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D10"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 C10×D10 를 채점기가 직접 곱한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!G11 — 11행의 수량×단가",
+      "sheet": "매출",
+      "cell": "G11",
+      "expect_from": {
+        "calc": {
+          "expr": "c*d",
+          "vars": {
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C11"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D11"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 C11×D11 를 채점기가 직접 곱한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!H2 — 2행 금액×세율(늘 K1 을 본다)",
+      "sheet": "매출",
+      "cell": "H2",
+      "expect_from": {
+        "calc": {
+          "expr": "c*d*0.1",
+          "vars": {
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C2"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D2"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 C2×D2 에 시킨 세율 10% 를 곱한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!H3 — 3행 금액×세율(늘 K1 을 본다)",
+      "sheet": "매출",
+      "cell": "H3",
+      "expect_from": {
+        "calc": {
+          "expr": "c*d*0.1",
+          "vars": {
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C3"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D3"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 C3×D3 에 시킨 세율 10% 를 곱한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!H4 — 4행 금액×세율(늘 K1 을 본다)",
+      "sheet": "매출",
+      "cell": "H4",
+      "expect_from": {
+        "calc": {
+          "expr": "c*d*0.1",
+          "vars": {
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C4"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D4"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 C4×D4 에 시킨 세율 10% 를 곱한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!H5 — 5행 금액×세율(늘 K1 을 본다)",
+      "sheet": "매출",
+      "cell": "H5",
+      "expect_from": {
+        "calc": {
+          "expr": "c*d*0.1",
+          "vars": {
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C5"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D5"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 C5×D5 에 시킨 세율 10% 를 곱한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!H6 — 6행 금액×세율(늘 K1 을 본다)",
+      "sheet": "매출",
+      "cell": "H6",
+      "expect_from": {
+        "calc": {
+          "expr": "c*d*0.1",
+          "vars": {
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C6"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D6"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 C6×D6 에 시킨 세율 10% 를 곱한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!H7 — 7행 금액×세율(늘 K1 을 본다)",
+      "sheet": "매출",
+      "cell": "H7",
+      "expect_from": {
+        "calc": {
+          "expr": "c*d*0.1",
+          "vars": {
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C7"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D7"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 C7×D7 에 시킨 세율 10% 를 곱한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!H8 — 8행 금액×세율(늘 K1 을 본다)",
+      "sheet": "매출",
+      "cell": "H8",
+      "expect_from": {
+        "calc": {
+          "expr": "c*d*0.1",
+          "vars": {
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C8"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D8"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 C8×D8 에 시킨 세율 10% 를 곱한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!H9 — 9행 금액×세율(늘 K1 을 본다)",
+      "sheet": "매출",
+      "cell": "H9",
+      "expect_from": {
+        "calc": {
+          "expr": "c*d*0.1",
+          "vars": {
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C9"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D9"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 C9×D9 에 시킨 세율 10% 를 곱한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!H10 — 10행 금액×세율(늘 K1 을 본다)",
+      "sheet": "매출",
+      "cell": "H10",
+      "expect_from": {
+        "calc": {
+          "expr": "c*d*0.1",
+          "vars": {
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C10"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D10"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 C10×D10 에 시킨 세율 10% 를 곱한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!H11 — 11행 금액×세율(늘 K1 을 본다)",
+      "sheet": "매출",
+      "cell": "H11",
+      "expect_from": {
+        "calc": {
+          "expr": "c*d*0.1",
+          "vars": {
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C11"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D11"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 C11×D11 에 시킨 세율 10% 를 곱한 값"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "매출 A1:E12 는 원본과 같다",
+      "sheet": "매출",
+      "range": "A1:E12",
+      "source": "practice/이번 달 매출.xlsx"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 폴더의 원본 「이번 달 매출.xlsx」는 처음 받은 그대로다",
+      "file": "practice/이번 달 매출.xlsx"
+    }
+  ],
+  "checklist": [
+    "G2:H3 시험에서 H3(=$C$2*$D$2)이 오류 없이 2행 값 3,870,000 을 보이는 것을 본 뒤 지웠다",
+    "G열 수식이 줄마다 자기 줄을 가리키고(=C5*D5 처럼), H열 수식이 $K$1 을 가리킨다"
+  ]
+}

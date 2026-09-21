@@ -1,0 +1,418 @@
+{
+  "id": "P3-01",
+  "title": "담당자별 집계표를 만들고 세 가지로 검산하기",
+  "chapter": "3부 종합 — 9.4 · 10.1 · 11.1~11.4",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/이번 달 매출.xlsx",
+  "submit_file": "P3-01_집계.xlsx",
+  "checks": [
+    {
+      "type": "sheet_exists",
+      "what": "「집계」 시트가 있다",
+      "sheet": "집계"
+    },
+    {
+      "type": "cell_equals",
+      "what": "집계!A2 — 담당자 1번째(매출 시트에 처음 나온 차례)",
+      "sheet": "집계",
+      "cell": "A2",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "cell",
+        "cell": "A2"
+      },
+      "source_note": "원본 매출 A2 — 그 이름이 처음 나오는 칸(_expected.py 가 확인)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "집계!A3 — 담당자 2번째(매출 시트에 처음 나온 차례)",
+      "sheet": "집계",
+      "cell": "A3",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "cell",
+        "cell": "A3"
+      },
+      "source_note": "원본 매출 A3 — 그 이름이 처음 나오는 칸(_expected.py 가 확인)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "집계!A4 — 담당자 3번째(매출 시트에 처음 나온 차례)",
+      "sheet": "집계",
+      "cell": "A4",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "cell",
+        "cell": "A5"
+      },
+      "source_note": "원본 매출 A5 — 그 이름이 처음 나오는 칸(_expected.py 가 확인)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "집계!A5 — 담당자 4번째(매출 시트에 처음 나온 차례)",
+      "sheet": "집계",
+      "cell": "A5",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "cell",
+        "cell": "A8"
+      },
+      "source_note": "원본 매출 A8 — 그 이름이 처음 나오는 칸(_expected.py 가 확인)"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "집계!B2 가 SUMIF 수식이다",
+      "sheet": "집계",
+      "cell": "B2",
+      "functions": [
+        "SUMIF"
+      ]
+    },
+    {
+      "type": "cell_equals",
+      "what": "집계!B2 — 그 줄 담당자의 금액 합",
+      "sheet": "집계",
+      "cell": "B2",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "sumproduct",
+        "ranges": [
+          "C2:C11",
+          "D2:D11"
+        ],
+        "where": [
+          {
+            "range": "A2:A11",
+            "equals": {
+              "from": {
+                "source": "@submitted",
+                "sheet": "집계",
+                "op": "cell",
+                "cell": "A2"
+              }
+            }
+          }
+        ]
+      },
+      "source_note": "원본 매출에서 담당자가 이 줄 A열 이름과 같은 줄의 수량×단가를 채점기가 직접 더한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "집계!C2 — 그 줄 담당자의 건수",
+      "sheet": "집계",
+      "cell": "C2",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "count",
+        "range": "A2:A11",
+        "where": [
+          {
+            "range": "A2:A11",
+            "equals": {
+              "from": {
+                "source": "@submitted",
+                "sheet": "집계",
+                "op": "cell",
+                "cell": "A2"
+              }
+            }
+          }
+        ]
+      },
+      "source_note": "원본 매출에서 담당자가 이 줄 A열 이름과 같은 줄을 채점기가 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "집계!B3 — 그 줄 담당자의 금액 합",
+      "sheet": "집계",
+      "cell": "B3",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "sumproduct",
+        "ranges": [
+          "C2:C11",
+          "D2:D11"
+        ],
+        "where": [
+          {
+            "range": "A2:A11",
+            "equals": {
+              "from": {
+                "source": "@submitted",
+                "sheet": "집계",
+                "op": "cell",
+                "cell": "A3"
+              }
+            }
+          }
+        ]
+      },
+      "source_note": "원본 매출에서 담당자가 이 줄 A열 이름과 같은 줄의 수량×단가를 채점기가 직접 더한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "집계!C3 — 그 줄 담당자의 건수",
+      "sheet": "집계",
+      "cell": "C3",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "count",
+        "range": "A2:A11",
+        "where": [
+          {
+            "range": "A2:A11",
+            "equals": {
+              "from": {
+                "source": "@submitted",
+                "sheet": "집계",
+                "op": "cell",
+                "cell": "A3"
+              }
+            }
+          }
+        ]
+      },
+      "source_note": "원본 매출에서 담당자가 이 줄 A열 이름과 같은 줄을 채점기가 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "집계!B4 — 그 줄 담당자의 금액 합",
+      "sheet": "집계",
+      "cell": "B4",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "sumproduct",
+        "ranges": [
+          "C2:C11",
+          "D2:D11"
+        ],
+        "where": [
+          {
+            "range": "A2:A11",
+            "equals": {
+              "from": {
+                "source": "@submitted",
+                "sheet": "집계",
+                "op": "cell",
+                "cell": "A4"
+              }
+            }
+          }
+        ]
+      },
+      "source_note": "원본 매출에서 담당자가 이 줄 A열 이름과 같은 줄의 수량×단가를 채점기가 직접 더한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "집계!C4 — 그 줄 담당자의 건수",
+      "sheet": "집계",
+      "cell": "C4",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "count",
+        "range": "A2:A11",
+        "where": [
+          {
+            "range": "A2:A11",
+            "equals": {
+              "from": {
+                "source": "@submitted",
+                "sheet": "집계",
+                "op": "cell",
+                "cell": "A4"
+              }
+            }
+          }
+        ]
+      },
+      "source_note": "원본 매출에서 담당자가 이 줄 A열 이름과 같은 줄을 채점기가 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "집계!B5 — 그 줄 담당자의 금액 합",
+      "sheet": "집계",
+      "cell": "B5",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "sumproduct",
+        "ranges": [
+          "C2:C11",
+          "D2:D11"
+        ],
+        "where": [
+          {
+            "range": "A2:A11",
+            "equals": {
+              "from": {
+                "source": "@submitted",
+                "sheet": "집계",
+                "op": "cell",
+                "cell": "A5"
+              }
+            }
+          }
+        ]
+      },
+      "source_note": "원본 매출에서 담당자가 이 줄 A열 이름과 같은 줄의 수량×단가를 채점기가 직접 더한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "집계!C5 — 그 줄 담당자의 건수",
+      "sheet": "집계",
+      "cell": "C5",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "count",
+        "range": "A2:A11",
+        "where": [
+          {
+            "range": "A2:A11",
+            "equals": {
+              "from": {
+                "source": "@submitted",
+                "sheet": "집계",
+                "op": "cell",
+                "cell": "A5"
+              }
+            }
+          }
+        ]
+      },
+      "source_note": "원본 매출에서 담당자가 이 줄 A열 이름과 같은 줄을 채점기가 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "집계!A6 — 합계 줄",
+      "sheet": "집계",
+      "cell": "A6",
+      "expect": "합계"
+    },
+    {
+      "type": "cell_equals",
+      "what": "집계!B6 — 금액 합계 = 매출 전체 합계",
+      "sheet": "집계",
+      "cell": "B6",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "sumproduct",
+        "ranges": [
+          "C2:C11",
+          "D2:D11"
+        ]
+      },
+      "source_note": "원본 매출 수량×단가를 행마다 곱해 채점기가 직접 더한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "집계!C6 — 건수 합계 = 매출 줄 수",
+      "sheet": "집계",
+      "cell": "C6",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "count",
+        "range": "A2:A11"
+      },
+      "source_note": "원본 매출 A2:A11 에서 이름이 적힌 칸을 채점기가 직접 센 값"
+    },
+    {
+      "type": "sheet_exists",
+      "what": "「검산」 시트가 있다",
+      "sheet": "검산"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검산!B1 — 손 검산(이현우)",
+      "sheet": "검산",
+      "cell": "B1",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "sumproduct",
+        "ranges": [
+          "C2:C11",
+          "D2:D11"
+        ],
+        "where": [
+          {
+            "range": "A2:A11",
+            "equals": "이현우"
+          }
+        ]
+      },
+      "source_note": "원본 매출 시트에서 담당자가 「이현우」인 줄의 수량×단가를 채점기가 직접 더한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검산!B3 — 음성 대조(A4 를 바꾸었을 때 이현우 금액)",
+      "sheet": "검산",
+      "cell": "B3",
+      "expect_from": {
+        "calc": {
+          "expr": "s - c*d",
+          "vars": {
+            "s": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "sumproduct",
+              "ranges": [
+                "C2:C11",
+                "D2:D11"
+              ],
+              "where": [
+                {
+                  "range": "A2:A11",
+                  "equals": "이현우"
+                }
+              ]
+            },
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C4"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D4"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 이현우 합에서 원본 4행 수량×단가를 뺀 값"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "매출 A1:E12 는 원본과 같다(음성 대조 뒤 돌려놓았다)",
+      "sheet": "매출",
+      "range": "A1:E12",
+      "source": "practice/이번 달 매출.xlsx"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 폴더의 원본 「이번 달 매출.xlsx」는 처음 받은 그대로다",
+      "file": "practice/이번 달 매출.xlsx"
+    }
+  ],
+  "checklist": [
+    "집계 시트의 수식에 IFERROR 가 없다(오류를 0 으로 덮지 않았다)",
+    "집계 B열 수식이 담당자 이름을 글자로 박지 않고 그 줄 A열 칸을 가리킨다",
+    "검산 시트의 「집계 합계 = 매출 합계」 대조가 「같음」이다"
+  ]
+}

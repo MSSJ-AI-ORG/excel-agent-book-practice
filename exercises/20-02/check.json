@@ -1,0 +1,35 @@
+{
+  "id": "20-02",
+  "title": "일부러 망가뜨리고 복구 절차대로 되돌리기",
+  "chapter": "20장 20.3 날짜별 백업 규칙 만들기 · 20.4 되돌리는 절차를 문서로 남기기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/부서 관리대장.xlsx",
+  "submit_file": "20-02_복구.xlsx",
+  "checks": [
+    {
+      "type": "range_same_as_source",
+      "what": "사본의 대장 시트(A1:F19)는 한 칸도 바뀌지 않았다",
+      "sheet": "대장",
+      "range": "A1:F19",
+      "source": "practice/부서 관리대장.xlsx"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "정산 시트(A1:D7)의 수식도 원본 그대로다",
+      "sheet": "정산",
+      "range": "A1:D7",
+      "source": "practice/부서 관리대장.xlsx"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 의 원본 「부서 관리대장.xlsx」는 처음 받은 그대로다",
+      "file": "practice/부서 관리대장.xlsx"
+    }
+  ],
+  "checklist": [
+    "복구절차.md 의 네 단계마다 «실제로 칠 문장» 이 적혀 있다",
+    "되돌리기 전에 망가진 상태를 「_되돌리기전」 이름으로 남겼다(되돌리는 작업도 되돌릴 수 있게)",
+    "「_백업\\목록.md」에 「그 뒤에 한 작업」 칸이 있다"
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "id": "P1-01",
+  "title": "1부 방식으로 한 벌 손보고, 바뀐 자리를 표시해 넘기기",
+  "chapter": "1부 종합 · 3장 3.2 · 3.3 · 4장 4.1 · 4.2 바뀐 셀에 표시 남기게 하기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/이번 달 매출.xlsx",
+  "submit_file": "P1-01_1부종합.xlsx",
+  "_note": "「강민서 / 모니터」 줄은 원본 3행이다. 그 줄 번호, 변경목록의 셀 주소·종류는 값으로 박았고, 원본에서 나온 값인지는 _expected.py 가 확인한다. 전·후 금액은 채점기가 원본 입력 칸에서 계산한다.",
+  "checks": [
+    { "type": "font_bold", "what": "1행 머리글(A1:E1)이 굵게", "sheet": "매출", "range": "A1:E1" },
+    { "type": "number_format", "what": "C~E열 숫자(C2:E11)에 천 단위 구분 기호", "sheet": "매출", "range": "C2:E11", "format": "#,##0" },
+    { "type": "number_format", "what": "합계 칸(E12)에도 천 단위 구분 기호", "sheet": "매출", "range": "E12", "format": "#,##0" },
+    { "type": "column_width_min", "what": "D·E열이 금액을 ##### 없이 보여 줄 만큼 넓다", "sheet": "매출", "columns": ["D", "E"], "min": 9 },
+    { "type": "freeze_panes", "what": "1행 머리글 틀 고정(A2)", "sheet": "매출", "cell": "A2" },
+
+    { "type": "cell_equals", "what": "매출!C3 — 「강민서 / 모니터」 줄의 수량이 9", "sheet": "매출", "cell": "C3", "expect": 9, "source_note": "과제에서 시킨 값" },
+    { "type": "range_same_as_source", "what": "1~2행은 원본 그대로", "sheet": "매출", "range": "A1:E2", "source": "practice/이번 달 매출.xlsx" },
+    { "type": "range_same_as_source", "what": "3행의 담당자·품목은 원본 그대로", "sheet": "매출", "range": "A3:B3", "source": "practice/이번 달 매출.xlsx" },
+    { "type": "range_same_as_source", "what": "4~12행의 담당자·품목·수량은 원본 그대로", "sheet": "매출", "range": "A4:C12", "source": "practice/이번 달 매출.xlsx" },
+    { "type": "range_same_as_source", "what": "단가·금액 열(D3:E12)은 값도 수식도 원본 그대로", "sheet": "매출", "range": "D3:E12", "source": "practice/이번 달 매출.xlsx" },
+    {
+      "type": "cell_equals",
+      "what": "매출!E12 — 합계가 수량 9를 반영해 따라 바뀌었다",
+      "sheet": "매출",
+      "cell": "E12",
+      "expect_from": { "calc": {
+        "expr": "s - c * d + 9 * d",
+        "vars": {
+          "s": { "source": "practice/이번 달 매출.xlsx", "sheet": "매출", "op": "sumproduct", "ranges": ["C2:C11", "D2:D11"] },
+          "c": { "source": "practice/이번 달 매출.xlsx", "sheet": "매출", "cell": "C3" },
+          "d": { "source": "practice/이번 달 매출.xlsx", "sheet": "매출", "cell": "D3" }
+        }
+      } },
+      "source_note": "원본 수량×단가 합에서 「강민서 / 모니터」 줄만 수량을 9로 바꿔 채점기가 다시 더한 값"
+    },
+
+    { "type": "sheet_exists", "what": "「변경목록」 시트가 있다", "sheet": "변경목록" },
+    { "type": "cell_equals", "what": "변경목록 첫째 줄 — 셀 주소", "sheet": "변경목록", "cell": "A2", "expect": "C3" },
+    {
+      "type": "cell_equals", "what": "변경목록 첫째 줄 — 전", "sheet": "변경목록", "cell": "B2",
+      "expect_from": { "source": "practice/이번 달 매출.xlsx", "sheet": "매출", "cell": "C3" },
+      "source_note": "원본 매출!C3 을 채점기가 읽은 값"
+    },
+    { "type": "cell_equals", "what": "변경목록 첫째 줄 — 후", "sheet": "변경목록", "cell": "C2", "expect": 9 },
+    { "type": "cell_equals", "what": "변경목록 첫째 줄 — 종류", "sheet": "변경목록", "cell": "D2", "expect": "직접" },
+
+    { "type": "cell_equals", "what": "변경목록 둘째 줄 — 셀 주소", "sheet": "변경목록", "cell": "A3", "expect": "E3" },
+    {
+      "type": "cell_equals", "what": "변경목록 둘째 줄 — 전", "sheet": "변경목록", "cell": "B3",
+      "expect_from": { "calc": {
+        "expr": "c * d",
+        "vars": {
+          "c": { "source": "practice/이번 달 매출.xlsx", "sheet": "매출", "cell": "C3" },
+          "d": { "source": "practice/이번 달 매출.xlsx", "sheet": "매출", "cell": "D3" }
+        }
+      } },
+      "source_note": "원본 C3×D3 을 채점기가 계산한 값"
+    },
+    {
+      "type": "cell_equals", "what": "변경목록 둘째 줄 — 후", "sheet": "변경목록", "cell": "C3",
+      "expect_from": { "calc": {
+        "expr": "9 * d",
+        "vars": { "d": { "source": "practice/이번 달 매출.xlsx", "sheet": "매출", "cell": "D3" } }
+      } },
+      "source_note": "원본 D3 에 수량 9를 곱해 채점기가 계산한 값"
+    },
+    { "type": "cell_equals", "what": "변경목록 둘째 줄 — 종류", "sheet": "변경목록", "cell": "D3", "expect": "따라" },
+
+    { "type": "cell_equals", "what": "변경목록 셋째 줄 — 셀 주소", "sheet": "변경목록", "cell": "A4", "expect": "E12" },
+    {
+      "type": "cell_equals", "what": "변경목록 셋째 줄 — 전", "sheet": "변경목록", "cell": "B4",
+      "expect_from": { "source": "practice/이번 달 매출.xlsx", "sheet": "매출", "op": "sumproduct", "ranges": ["C2:C11", "D2:D11"] },
+      "source_note": "원본 수량×단가를 행마다 곱해 채점기가 더한 값"
+    },
+    {
+      "type": "cell_equals", "what": "변경목록 셋째 줄 — 후", "sheet": "변경목록", "cell": "C4",
+      "expect_from": { "calc": {
+        "expr": "s - c * d + 9 * d",
+        "vars": {
+          "s": { "source": "practice/이번 달 매출.xlsx", "sheet": "매출", "op": "sumproduct", "ranges": ["C2:C11", "D2:D11"] },
+          "c": { "source": "practice/이번 달 매출.xlsx", "sheet": "매출", "cell": "C3" },
+          "d": { "source": "practice/이번 달 매출.xlsx", "sheet": "매출", "cell": "D3" }
+        }
+      } },
+      "source_note": "원본 수량×단가 합에서 3행만 수량을 9로 바꿔 채점기가 다시 더한 값"
+    },
+    { "type": "cell_equals", "what": "변경목록 셋째 줄 — 종류", "sheet": "변경목록", "cell": "D4", "expect": "따라" },
+    { "type": "cell_equals", "what": "변경목록 넷째 줄은 비어 있다", "sheet": "변경목록", "cell": "A5", "expect": "" },
+
+    { "type": "fill_present", "what": "직접 바꾼 칸(C3)에 표시 색", "sheet": "매출", "range": "C3" },
+    { "type": "fill_present", "what": "따라 바뀐 칸(E3)에 표시 색", "sheet": "매출", "range": "E3" },
+    { "type": "fill_present", "what": "따라 바뀐 칸(E12)에 표시 색", "sheet": "매출", "range": "E12" },
+
+    {
+      "type": "practice_untouched",
+      "what": "practice 의 원본 「이번 달 매출.xlsx」는 처음 받은 그대로다",
+      "file": "practice/이번 달 매출.xlsx"
+    }
+  ],
+  "checklist": [
+    "고치기 전에 4.4 사본 규칙을 먼저 걸었고, 「_백업」 폴더에 사본이 생겼다",
+    "직접 바꾼 칸(C3)과 따라 바뀐 칸(E3·E12)의 색이 서로 다르고, 따라 바뀐 두 칸은 같은 색이다. 채점기는 아직 색이 같은지 다른지를 보지 못합니다",
+    "칠하기 전에 「그 칸들에 원래 채우기 색이 있었는지」를 받아 두었다",
+    "E열 전체에는 파란 채우기를 걸지 않았다(이 과제는 채우기를 뺀다)"
+  ]
+}

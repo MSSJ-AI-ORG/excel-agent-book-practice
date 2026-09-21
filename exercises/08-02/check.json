@@ -1,0 +1,87 @@
+{
+  "id": "08-02",
+  "title": "표로 바꾸고 20행을 넣어 정산이 따라오는지 보기",
+  "chapter": "8장 8.4 파일이 바뀌어도 안 깨지게 기준 잡기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/부서 관리대장.xlsx",
+  "submit_file": "08-02_표.xlsx",
+  "checks": [
+    {
+      "type": "cell_equals",
+      "what": "대장!B20 — 20행에 넣은 거래의 부서가 「영업1팀」",
+      "sheet": "대장",
+      "cell": "B20",
+      "expect": "영업1팀"
+    },
+    {
+      "type": "cell_equals",
+      "what": "대장!D20 — 20행에 넣은 거래의 금액이 200만",
+      "sheet": "대장",
+      "cell": "D20",
+      "expect": 2000000
+    },
+    {
+      "type": "cell_equals",
+      "what": "정산!B3 — 20행까지 더한 영업1팀 매출합계(정산이 새 줄을 따라왔다)",
+      "sheet": "정산",
+      "cell": "B3",
+      "expect_from": {
+        "source": "@submitted",
+        "sheet": "대장",
+        "op": "sum",
+        "range": "D4:D20",
+        "where": [
+          {
+            "range": "B4:B20",
+            "equals": "영업1팀"
+          }
+        ]
+      },
+      "source_note": "제출 파일 대장 B4:B20 에서 정확히 「영업1팀」인 줄의 D 를 채점기가 다시 더한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "정산!B3 — 원본 영업1팀 합계 + 20행의 200만",
+      "sheet": "정산",
+      "cell": "B3",
+      "expect_from": {
+        "calc": {
+          "expr": "s + 2000000",
+          "vars": {
+            "s": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장에서 정확히 「영업1팀」인 줄의 D 합에 시킨 금액 200만을 더한 값"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "대장 4~19행은 원본과 같다",
+      "sheet": "대장",
+      "range": "A4:F19",
+      "source": "practice/부서 관리대장.xlsx"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 폴더의 원본 「부서 관리대장.xlsx」는 처음 받은 그대로다",
+      "file": "practice/부서 관리대장.xlsx"
+    }
+  ],
+  "checklist": [
+    "표로 바꾸기 전에 20행을 넣었을 때 정산!B3 이 그대로(5,270,000)인 것을 보고 그 줄을 지웠다",
+    "대장에 「대장표」라는 표가 있고 범위가 A3:F20 이다([수식] - [이름 관리자]에 표 이름과 범위가 보인다)",
+    "정산!B3 수식이 대장!$B$4:$B$20 으로 스스로 바뀌어 있다"
+  ]
+}

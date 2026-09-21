@@ -1,0 +1,119 @@
+{
+  "id": "05-01",
+  "title": "세는 기준을 적어 구조 목록 받기",
+  "chapter": "5장 5.1 시트·이름정의·표를 목록으로 뽑기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/부서 관리대장.xlsx",
+  "submit_file": "05-01_구조.xlsx",
+  "checks": [
+    {
+      "type": "sheet_exists",
+      "what": "「구조」 시트가 있다",
+      "sheet": "구조"
+    },
+    {
+      "type": "cell_equals",
+      "what": "구조!B1 — 시트 수",
+      "sheet": "구조",
+      "cell": "B1",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "op": "sheet_count"
+      },
+      "source_note": "원본 관리대장의 시트 수를 채점기가 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "구조!B2 — 이름 정의 수(숨김 이름은 빼고)",
+      "sheet": "구조",
+      "cell": "B2",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "op": "defined_name_count"
+      },
+      "source_note": "원본 관리대장에서 숨김이 아닌 이름 정의를 채점기가 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "구조!B3 — 표 수",
+      "sheet": "구조",
+      "cell": "B3",
+      "expect": 2,
+      "source_note": "원본 관리대장의 표 수 — _expected.py 가 원본에서 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "구조!B4 — 차트 수",
+      "sheet": "구조",
+      "cell": "B4",
+      "expect": 1,
+      "source_note": "원본 관리대장의 차트 수 — _expected.py 가 원본에서 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "구조!A7 — 이름 표 1번째 줄(이름 관리자 차례)",
+      "sheet": "구조",
+      "cell": "A7",
+      "expect": "기준요율",
+      "source_note": "원본 관리대장의 이름 정의를 가나다순으로 늘어놓은 것 — _expected.py"
+    },
+    {
+      "type": "cell_equals",
+      "what": "구조!A8 — 이름 표 2번째 줄(이름 관리자 차례)",
+      "sheet": "구조",
+      "cell": "A8",
+      "expect": "대장범위",
+      "source_note": "원본 관리대장의 이름 정의를 가나다순으로 늘어놓은 것 — _expected.py"
+    },
+    {
+      "type": "cell_equals",
+      "what": "구조!A9 — 이름 표 3번째 줄(이름 관리자 차례)",
+      "sheet": "구조",
+      "cell": "A9",
+      "expect": "성과가산",
+      "source_note": "원본 관리대장의 이름 정의를 가나다순으로 늘어놓은 것 — _expected.py"
+    },
+    {
+      "type": "cell_equals",
+      "what": "구조!A10 — 이름 표 4번째 줄(이름 관리자 차례)",
+      "sheet": "구조",
+      "cell": "A10",
+      "expect": "정산대상",
+      "source_note": "원본 관리대장의 이름 정의를 가나다순으로 늘어놓은 것 — _expected.py"
+    },
+    {
+      "type": "cell_equals",
+      "what": "구조!C7 — 「기준요율」이 가리키는 칸의 값",
+      "sheet": "구조",
+      "cell": "C7",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "op": "defined_name_value",
+        "name": "기준요율"
+      },
+      "source_note": "원본 이름 정의 기준요율이 가리키는 칸의 값을 채점기가 직접 읽은 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "구조!C9 — 「성과가산」에 직접 담긴 값",
+      "sheet": "구조",
+      "cell": "C9",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "op": "defined_name_value",
+        "name": "성과가산"
+      },
+      "source_note": "원본 이름 정의 성과가산에 들어 있는 고정값을 채점기가 직접 읽은 값"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 폴더의 원본 「부서 관리대장.xlsx」는 처음 받은 그대로다",
+      "file": "practice/부서 관리대장.xlsx"
+    }
+  ],
+  "checklist": [
+    "「숨김 이름은 빼고 이름 관리자에 보이는 것만」을 붙여 시켰고, 숨김 이름은 따로 받았다(없으면 없다는 답)",
+    "[수식] - [이름 관리자]를 직접 열어 이름이 몇 개 보이는지 구조!B2 와 댔다"
+  ]
+}

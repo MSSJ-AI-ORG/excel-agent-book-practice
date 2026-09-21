@@ -1,0 +1,78 @@
+{
+  "id": "10-01",
+  "title": "조건을 셀로 빼 두고 직접 한 칸 고쳐 보기",
+  "chapter": "10장 10.1 조건에 맞는 값만 더하게 시키기 · 10.4 받은 수식의 함수 이름과 뜻 배우기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/이번 달 매출.xlsx",
+  "submit_file": "10-01_조건합.xlsx",
+  "checks": [
+    {
+      "type": "cell_is_formula",
+      "what": "매출!N2 가 SUMIF 수식이다",
+      "sheet": "매출",
+      "cell": "N2",
+      "functions": [
+        "SUMIF"
+      ]
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!N1 — 손으로 고쳐 넣은 담당자 「강민서」",
+      "sheet": "매출",
+      "cell": "N1",
+      "expect": "강민서"
+    },
+    {
+      "type": "cell_is_constant",
+      "what": "매출!N1 은 수식이 아니라 적어 둔 이름이다",
+      "sheet": "매출",
+      "cell": "N1"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!N2 — N1 에 적은 담당자의 금액 합계(N1 을 바꾸면 따라 바뀐다)",
+      "sheet": "매출",
+      "cell": "N2",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "sumproduct",
+        "ranges": [
+          "C2:C11",
+          "D2:D11"
+        ],
+        "where": [
+          {
+            "range": "A2:A11",
+            "equals": {
+              "from": {
+                "source": "@submitted",
+                "sheet": "매출",
+                "op": "cell",
+                "cell": "N1"
+              }
+            }
+          }
+        ]
+      },
+      "source_note": "원본 매출에서 담당자가 제출 파일 N1 의 이름과 같은 줄의 수량×단가를 채점기가 직접 더한 값"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "매출 A1:E12 는 원본과 같다",
+      "sheet": "매출",
+      "range": "A1:E12",
+      "source": "practice/이번 달 매출.xlsx"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 폴더의 원본 「이번 달 매출.xlsx」는 처음 받은 그대로다",
+      "file": "practice/이번 달 매출.xlsx"
+    }
+  ],
+  "checklist": [
+    "N2 수식에 「이현우」나 「강민서」가 글자로 박혀 있지 않고 N1 을 가리킨다",
+    "「알려만 줘. 고치지는 마.」를 붙여 받았고, N1 은 내가 손으로 고쳤다"
+  ]
+}

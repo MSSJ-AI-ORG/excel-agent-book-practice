@@ -1,0 +1,415 @@
+{
+  "id": "06-01",
+  "title": "긴 수식을 단계마다 한 칸씩 풀어 적기",
+  "chapter": "6장 6.1 긴 수식 한 줄을 단계별로 풀어 읽기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/부서 관리대장.xlsx",
+  "submit_file": "06-01_풀이.xlsx",
+  "checks": [
+    {
+      "type": "sheet_exists",
+      "what": "「풀이」 시트가 있다",
+      "sheet": "풀이"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "풀이!B2 에 수식이 들어 있다 — ①",
+      "sheet": "풀이",
+      "cell": "B2",
+      "functions": [
+        "SUMIF"
+      ]
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "풀이!B3 에 수식이 들어 있다 — ②",
+      "sheet": "풀이",
+      "cell": "B3",
+      "functions": [
+        "VLOOKUP"
+      ]
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "풀이!B4 에 수식이 들어 있다 — ③",
+      "sheet": "풀이",
+      "cell": "B4"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "풀이!B5 에 수식이 들어 있다 — ④",
+      "sheet": "풀이",
+      "cell": "B5",
+      "functions": [
+        "COUNTIF"
+      ]
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "풀이!B6 에 수식이 들어 있다 — ⑤",
+      "sheet": "풀이",
+      "cell": "B6"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "풀이!B7 에 수식이 들어 있다 — ⑥",
+      "sheet": "풀이",
+      "cell": "B7"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "풀이!B8 에 수식이 들어 있다 — ⑦",
+      "sheet": "풀이",
+      "cell": "B8"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "풀이!B9 에 수식이 들어 있다 — ⑧",
+      "sheet": "풀이",
+      "cell": "B9",
+      "functions": [
+        "ROUND"
+      ]
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "풀이!B10 에 수식이 들어 있다 — ⑨",
+      "sheet": "풀이",
+      "cell": "B10"
+    },
+    {
+      "type": "cell_equals",
+      "what": "풀이!B2 값 — ① 영업1팀 매출합(부서 이름이 정확히 같은 줄만)",
+      "sheet": "풀이",
+      "cell": "B2",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "sum",
+        "range": "D4:D19",
+        "where": [
+          {
+            "range": "B4:B19",
+            "equals": "영업1팀"
+          }
+        ]
+      },
+      "source_note": "원본 대장의 입력 칸(D열 금액·B열 부서)과 기준 시트·이름 정의에서 채점기가 정산 규칙대로 다시 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "풀이!B3 값 — ② 기준 시트의 영업1팀 목표",
+      "sheet": "풀이",
+      "cell": "B3",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "기준",
+        "op": "lookup",
+        "key_range": "A3:A5",
+        "return_range": "B3:B5",
+        "equals": "영업1팀"
+      },
+      "source_note": "원본 대장의 입력 칸(D열 금액·B열 부서)과 기준 시트·이름 정의에서 채점기가 정산 규칙대로 다시 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "풀이!B4 값 — ③ 매출이 목표 이상인가",
+      "sheet": "풀이",
+      "cell": "B4",
+      "expect_from": {
+        "calc": {
+          "expr": "s >= t",
+          "vars": {
+            "s": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            },
+            "t": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "기준",
+              "op": "lookup",
+              "key_range": "A3:A5",
+              "return_range": "B3:B5",
+              "equals": "영업1팀"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장의 입력 칸(D열 금액·B열 부서)과 기준 시트·이름 정의에서 채점기가 정산 규칙대로 다시 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "풀이!B5 값 — ④ 영업1팀 거래 건수",
+      "sheet": "풀이",
+      "cell": "B5",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsx",
+        "sheet": "대장",
+        "op": "count",
+        "range": "B4:B19",
+        "where": [
+          {
+            "range": "B4:B19",
+            "equals": "영업1팀"
+          }
+        ]
+      },
+      "source_note": "원본 대장의 입력 칸(D열 금액·B열 부서)과 기준 시트·이름 정의에서 채점기가 정산 규칙대로 다시 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "풀이!B6 값 — ⑤ 성과가산 가지(5건 이상이면 성과가산, 아니면 0)",
+      "sheet": "풀이",
+      "cell": "B6",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(n > 4, b, 0)",
+          "vars": {
+            "n": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "성과가산"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장의 입력 칸(D열 금액·B열 부서)과 기준 시트·이름 정의에서 채점기가 정산 규칙대로 다시 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "풀이!B7 값 — ⑥ 달성했을 때 갈 가지(매출×요율+가산)",
+      "sheet": "풀이",
+      "cell": "B7",
+      "expect_from": {
+        "calc": {
+          "expr": "s*r + if_(n > 4, b, 0)",
+          "vars": {
+            "s": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            },
+            "t": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "기준",
+              "op": "lookup",
+              "key_range": "A3:A5",
+              "return_range": "B3:B5",
+              "equals": "영업1팀"
+            },
+            "n": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "성과가산"
+            },
+            "r": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "기준요율"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장의 입력 칸(D열 금액·B열 부서)과 기준 시트·이름 정의에서 채점기가 정산 규칙대로 다시 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "풀이!B8 값 — ⑦ 미달일 때 갈 가지(매출×요율×0.5)",
+      "sheet": "풀이",
+      "cell": "B8",
+      "expect_from": {
+        "calc": {
+          "expr": "s*r*0.5",
+          "vars": {
+            "s": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            },
+            "r": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "기준요율"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장의 입력 칸(D열 금액·B열 부서)과 기준 시트·이름 정의에서 채점기가 정산 규칙대로 다시 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "풀이!B9 값 — ⑧ 천 원 단위로 반올림한 정산액",
+      "sheet": "풀이",
+      "cell": "B9",
+      "expect_from": {
+        "calc": {
+          "expr": "round_excel(if_(s >= t, s*r + if_(n > 4, b, 0), s*r*0.5), -3)",
+          "vars": {
+            "s": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            },
+            "t": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "기준",
+              "op": "lookup",
+              "key_range": "A3:A5",
+              "return_range": "B3:B5",
+              "equals": "영업1팀"
+            },
+            "n": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "성과가산"
+            },
+            "r": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "기준요율"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장의 입력 칸(D열 금액·B열 부서)과 기준 시트·이름 정의에서 채점기가 정산 규칙대로 다시 계산한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "풀이!B10 값 — ⑨ 정산 시트 D3 의 값",
+      "sheet": "풀이",
+      "cell": "B10",
+      "expect_from": {
+        "calc": {
+          "expr": "round_excel(if_(s >= t, s*r + if_(n > 4, b, 0), s*r*0.5), -3)",
+          "vars": {
+            "s": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            },
+            "t": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "기준",
+              "op": "lookup",
+              "key_range": "A3:A5",
+              "return_range": "B3:B5",
+              "equals": "영업1팀"
+            },
+            "n": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "equals": "영업1팀"
+                }
+              ]
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "성과가산"
+            },
+            "r": {
+              "source": "practice/부서 관리대장.xlsx",
+              "op": "defined_name_value",
+              "name": "기준요율"
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장의 입력 칸(D열 금액·B열 부서)과 기준 시트·이름 정의에서 채점기가 정산 규칙대로 다시 계산한 값"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "정산 시트는 한 칸도 바뀌지 않았다(「파일은 고치지 마」)",
+      "sheet": "정산",
+      "range": "A1:D7",
+      "source": "practice/부서 관리대장.xlsx"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 폴더의 원본 「부서 관리대장.xlsx」는 처음 받은 그대로다",
+      "file": "practice/부서 관리대장.xlsx"
+    }
+  ],
+  "checklist": [
+    "[수식] - [수식 계산]을 눌러 본 중간값(5270000>=6000000 → FALSE)이 풀이 시트의 ①~③ 과 같았다",
+    "5,270,000 × 0.03 × 0.5 = 79,050 → 79,000 을 손으로 한 번 계산해 보았다"
+  ]
+}

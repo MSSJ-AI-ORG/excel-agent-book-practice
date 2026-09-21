@@ -1,0 +1,20 @@
+# 02-02 정답·오답 파일을 만든 기록 (엑셀 COM, 2026-09-22)
+
+엑셀 버전 15.0 · 이번에 띄운 엑셀 pid 5260
+[solution] 파일 읽기 전용 속성: True
+[solution] 엑셀이 연 통합 문서 ReadOnly = True
+[solution] 화면 쪽 B2 = 태블릿
+[solution] Save() 오류 없음
+[solution] 저장 뒤 Saved = True
+[solution] 파일 지문이 원본과 같은가 = True
+[solution] 다시 열어 본 B2 = 노트북
+[solution] 저장소에 넣으려고 읽기 전용 속성은 기록 뒤에 풀었다(git 은 이 속성을 담지 않는다)
+[wrong] 흔한 실수: 읽기 전용을 걸지 않고 진행
+[wrong] 파일 읽기 전용 속성: False
+[wrong] 엑셀이 연 통합 문서 ReadOnly = False
+[wrong] 화면 쪽 B2 = 태블릿
+[wrong] Save() 오류 없음
+[wrong] 저장 뒤 Saved = True
+[wrong] 파일 지문이 원본과 같은가 = False
+[wrong] 다시 열어 본 B2 = 태블릿
+pid 5260 가 Quit 뒤에도 남아 강제 종료했다

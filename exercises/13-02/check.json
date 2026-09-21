@@ -1,0 +1,62 @@
+{
+  "id": "13-02",
+  "title": "한 번에 하나씩 고치고, 지우는 줄은 주석으로 남기기",
+  "chapter": "13장 13.2 시트 이름·범위가 바뀌어 깨진 곳 고치기 · 13.4 고친 매크로를 옛 결과와 대조하기",
+  "mode": "auto",
+  "file_kind": "text",
+  "start_file": "practice/부서 관리대장.xlsm",
+  "submit_file": "월말정리_고침.bas",
+  "checks": [
+    {
+      "type": "text_contains",
+      "what": "고친 모듈에 Sub 월말정리 가 있다",
+      "pattern": "^[ \\t]*(?:(?:Public|Private)[ \\t]+)?Sub[ \\t]+월말정리[ \\t]*\\(",
+      "ignore_comments": true,
+      "fail_hint": "Sub 월말정리() 줄이 없습니다. 깨진매크로 모듈을 내보냈는지 보세요."
+    },
+    {
+      "type": "text_absent",
+      "what": "없는 시트 이름(매출대장 · 백업_0401)을 부르는 줄이 없다",
+      "pattern": "(?:Sheets|Worksheets)\\([ \\t]*\"(?:매출대장|백업_0401)\"[ \\t]*\\)",
+      "ignore_comments": true
+    },
+    {
+      "type": "text_absent",
+      "what": "주석이 아닌 줄에 지우는 명령(.Delete)이 없다",
+      "pattern": "\\.Delete\\b",
+      "ignore_comments": true
+    },
+    {
+      "type": "text_contains",
+      "what": "지우는 줄은 지우지 않고 주석으로 남아 있다",
+      "pattern": "^[ \\t]*'[^\\n]*\\.Delete\\b",
+      "ignore_comments": false,
+      "fail_hint": "「'」로 막아 둔 .Delete 줄이 없습니다. 지우는 줄은 지우지 말고 주석 처리부터 합니다(13.2)."
+    },
+    {
+      "type": "text_absent",
+      "what": "4행~19행 고정(For i = 4 To 19)이 없다",
+      "pattern": "For[ \\t]+i[ \\t]*=[ \\t]*4[ \\t]+To[ \\t]+19\\b",
+      "ignore_comments": true
+    },
+    {
+      "type": "text_contains",
+      "what": "마지막 데이터 행을 찾는 End(xlUp) 이 있다",
+      "pattern": "End\\(xlUp\\)",
+      "ignore_comments": true,
+      "fail_hint": "End(xlUp) 이 없습니다. 마지막 데이터 행까지 돌게 고쳤는지 보세요."
+    },
+    {
+      "type": "text_contains",
+      "what": "월말정리 맨 위 주석에 「확인」(확인은 어떻게 했나)이 적혀 있다",
+      "pattern": "(?:^[ \\t]*'[^\\n]*확인[^\\n]*\\n(?:[ \\t]*'[^\\n]*\\n)*[ \\t]*(?:(?:Public|Private)[ \\t]+)?Sub[ \\t]+월말정리\\b)|(?:^[ \\t]*(?:(?:Public|Private)[ \\t]+)?Sub[ \\t]+월말정리\\b[^\\n]*\\n(?:[ \\t]*'[^\\n]*\\n)*?[ \\t]*'[^\\n]*확인)",
+      "ignore_comments": false,
+      "fail_hint": "Sub 월말정리 바로 위(또는 바로 아래)의 주석 덩어리에 「확인」이 들어간 줄이 없습니다. 「확인은 어떻게 했나」를 적었는지 보세요."
+    }
+  ],
+  "checklist": [
+    "고치기 전에 원본을 「월말정리_원본」으로 남겼다(다른 모듈에)",
+    "「백업_0401」을 어떻게 할지 클로드가 먼저 물어 왔다",
+    "고친 뒤 몇 행까지 도는지 받아 확인했다(대장에는 중간에 빈 행이 하나 있다)"
+  ]
+}

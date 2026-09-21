@@ -1,0 +1,41 @@
+{
+  "_note": "실습 원본 파일의 지문(sha256). 채점기가 「원본을 건드리지 않았나」를 볼 때 쓴다.",
+  "files": {
+    "이번 달 매출.xlsx": {
+      "sha256": "c81c596c36511bb695a0d67794bd53f82d1791e3e9235d489941bf59ef2e355d",
+      "bytes": 5868,
+      "fixture": "FX-A_이번달매출.xlsx",
+      "fixture_sha256": "c81c596c36511bb695a0d67794bd53f82d1791e3e9235d489941bf59ef2e355d"
+    },
+    "부서 관리대장.xlsx": {
+      "sha256": "6a0b680849a9a4f5f249a1d9a05772354e5adb3705d9a678fc104fa3fa94d108",
+      "bytes": 14941,
+      "fixture": "FX-B_부서관리대장.xlsx",
+      "fixture_sha256": "2a919df428acae34836969b298294e002eff3d7e7dcb528365d61ddf73109987"
+    },
+    "부서 관리대장.xlsm": {
+      "sha256": "eca77ca1cfec6a3763166329c127e594112f155484210a003d544f2a6f86bb6a",
+      "bytes": 26999,
+      "fixture": "FX-D_대장매크로.xlsm",
+      "fixture_sha256": "c55099135e486901e3eaafef524830143fcf8ee3581e0489c953bfffe1bee584"
+    },
+    "받은파일/영업1팀_상반기.xlsx": {
+      "sha256": "b9be057684d0f05a324d3f5741ee6eff68b5e847300727be58582605d1434766",
+      "bytes": 6447,
+      "fixture": "FX-F_받은파일/영업1팀_상반기.xlsx",
+      "fixture_sha256": "f5d31aec56a17f4b1c9ffb0efe1bf6dceb1d804a31f5c3a291dc0690cf383369"
+    },
+    "받은파일/영업2팀_상반기.xlsx": {
+      "sha256": "925edafa951bbee83e423071eb39883d87205fde1abb3e3cbee3eb8959d71f54",
+      "bytes": 6380,
+      "fixture": "FX-F_받은파일/영업2팀_상반기.xlsx",
+      "fixture_sha256": "d262a9c00067cfceb9f704d85839deabcea480e2ed11f56e4f842ab4d0c27648"
+    },
+    "받은파일/영업3팀_상반기.xlsx": {
+      "sha256": "cab191aca50ac1cd00d4499aed6c94fa717eb56f03d88b6556a00c93b19c61ef",
+      "bytes": 6345,
+      "fixture": "FX-F_받은파일/영업3팀_상반기.xlsx",
+      "fixture_sha256": "c0317b89b1d87bea88826869bc21102115754ba54c7a0694700a7eff3e9fe6f2"
+    }
+  }
+}

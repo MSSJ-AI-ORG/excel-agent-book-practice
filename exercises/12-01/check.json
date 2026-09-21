@@ -1,0 +1,80 @@
+{
+  "id": "12-01",
+  "title": "기록된 27줄에서 군더더기 걷어내기",
+  "chapter": "12장 12.2 기록된 코드를 클로드에게 해설받기 · 12.3 쓸데없이 기록된 줄 걷어내기",
+  "mode": "auto",
+  "file_kind": "text",
+  "start_file": "practice/부서 관리대장.xlsm",
+  "submit_file": "매크로1_정리.bas",
+  "checks": [
+    {
+      "type": "text_contains",
+      "what": "정리한 모듈에 Sub 매크로1 이 있다",
+      "pattern": "^[ \\t]*(?:(?:Public|Private)[ \\t]+)?Sub[ \\t]+매크로1[ \\t]*\\(",
+      "ignore_comments": true,
+      "fail_hint": "Sub 매크로1() 로 시작하는 줄이 없습니다. 기록매크로 모듈을 내보냈는지, 이름을 바꾸지 않았는지 보세요."
+    },
+    {
+      "type": "text_contains",
+      "what": "Option Explicit 이 남아 있다",
+      "pattern": "^[ \\t]*Option[ \\t]+Explicit\\b",
+      "ignore_comments": true,
+      "fail_hint": "Option Explicit 줄이 없어졌습니다. 걷어낼 줄이 아닙니다."
+    },
+    {
+      "type": "text_absent",
+      "what": "고르는 줄(.Select)이 없다",
+      "pattern": "\\.Select\\b",
+      "ignore_comments": true
+    },
+    {
+      "type": "text_absent",
+      "what": "고른 것을 바꾸는 줄(Selection. · With Selection)이 없다",
+      "pattern": "\\bSelection\\b",
+      "ignore_comments": true
+    },
+    {
+      "type": "text_contains",
+      "what": "머리글 굵게가 Range(\"A3:F3\").Font.Bold = True 한 줄로 되어 있다",
+      "pattern": "Range\\(\"A3:F3\"\\)\\.Font\\.Bold[ \\t]*=[ \\t]*True",
+      "ignore_comments": true,
+      "fail_hint": "Range(\"A3:F3\").Font.Bold = True 줄이 없습니다(12.2 「한 줄이면 된다」)."
+    },
+    {
+      "type": "text_contains",
+      "what": "금액 표시 형식이 Range(\"D4:D19\").NumberFormat = \"#,##0\" 로 남아 있다",
+      "pattern": "Range\\(\"D4:D19\"\\)\\.NumberFormat[ \\t]*=[ \\t]*\"#,##0\"",
+      "ignore_comments": true,
+      "fail_hint": "Range(\"D4:D19\").NumberFormat = \"#,##0\" 줄이 없습니다. 하려던 일 세 가지 중 하나가 빠졌습니다."
+    },
+    {
+      "type": "text_contains",
+      "what": "틀 고정(FreezePanes = True)이 남아 있다",
+      "pattern": "FreezePanes[ \\t]*=[ \\t]*True",
+      "ignore_comments": true,
+      "fail_hint": "FreezePanes = True 줄이 없습니다. 하려던 일 세 가지 중 하나가 빠졌습니다."
+    },
+    {
+      "type": "text_absent",
+      "what": "풀었다 다시 거는 줄(FreezePanes = False)이 없다",
+      "pattern": "FreezePanes[ \\t]*=[ \\t]*False",
+      "ignore_comments": true
+    },
+    {
+      "type": "text_absent",
+      "what": "기본값 설정 줄(PatternColorIndex = xlAutomatic)이 없다",
+      "pattern": "PatternColorIndex[ \\t]*=[ \\t]*xlAutomatic",
+      "ignore_comments": true
+    },
+    {
+      "type": "text_absent",
+      "what": "기본값 설정 줄(PatternTintAndShade = 0)이 없다",
+      "pattern": "PatternTintAndShade[ \\t]*=[ \\t]*0\\b",
+      "ignore_comments": true
+    }
+  ],
+  "checklist": [
+    "매크로1_원본 과 정리한 매크로1 을 «각각 새 사본에서» 돌렸고, 두 결과의 서식(A3:F3 굵게·색, D4:D19 표시 형식, 틀 고정 위치)이 같았다",
+    "고치기 전에 원래 코드를 「매크로1_원본」으로 남겼다(다른 모듈에)"
+  ]
+}

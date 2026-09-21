@@ -1,0 +1,52 @@
+# 12-01 채점기 검증 — 2026-09-22 00:13
+
+## solution
+$ python grader/check.py 12-01 exercises/12-01/solution/매크로1_정리.bas
+과제 12-01 · 기록된 27줄에서 군더더기 걷어내기
+
+  ✓ 정리한 모듈에 Sub 매크로1 이 있다
+  ✓ Option Explicit 이 남아 있다
+  ✓ 고르는 줄(.Select)이 없다
+  ✓ 고른 것을 바꾸는 줄(Selection. · With Selection)이 없다
+  ✓ 머리글 굵게가 Range("A3:F3").Font.Bold = True 한 줄로 되어 있다
+  ✓ 금액 표시 형식이 Range("D4:D19").NumberFormat = "#,##0" 로 남아 있다
+  ✓ 틀 고정(FreezePanes = True)이 남아 있다
+  ✓ 풀었다 다시 거는 줄(FreezePanes = False)이 없다
+  ✓ 기본값 설정 줄(PatternColorIndex = xlAutomatic)이 없다
+  ✓ 기본값 설정 줄(PatternTintAndShade = 0)이 없다
+
+맞은 항목 10 / 10
+전부 맞았습니다.
+
+채점기가 못 보는 것 — 스스로 확인하세요:
+  □ 매크로1_원본 과 정리한 매크로1 을 «각각 새 사본에서» 돌렸고, 두 결과의 서식(A3:F3 굵게·색, D4:D19 표시 형식, 틀 고정 위치)이 같았다
+  □ 고치기 전에 원래 코드를 「매크로1_원본」으로 남겼다(다른 모듈에)
+
+(돌려준 번호 0)
+
+## wrong
+$ python grader/check.py 12-01 exercises/12-01/wrong/매크로1_정리.bas
+과제 12-01 · 기록된 27줄에서 군더더기 걷어내기
+
+  ✓ 정리한 모듈에 Sub 매크로1 이 있다
+  ✓ Option Explicit 이 남아 있다
+  ✓ 고르는 줄(.Select)이 없다
+  ✓ 고른 것을 바꾸는 줄(Selection. · With Selection)이 없다
+  ✓ 머리글 굵게가 Range("A3:F3").Font.Bold = True 한 줄로 되어 있다
+  ✓ 금액 표시 형식이 Range("D4:D19").NumberFormat = "#,##0" 로 남아 있다
+  ✓ 틀 고정(FreezePanes = True)이 남아 있다
+  ✗ 풀었다 다시 거는 줄(FreezePanes = False)이 없다
+      → 없어야 할 줄이 남아 있습니다: 18번째 줄 「ActiveWindow.FreezePanes = False」
+  ✓ 기본값 설정 줄(PatternColorIndex = xlAutomatic)이 없다
+  ✓ 기본값 설정 줄(PatternTintAndShade = 0)이 없다
+
+맞은 항목 9 / 10
+✗ 표시한 항목을 고친 뒤 다시 채점해 보세요.
+
+채점기가 못 보는 것 — 스스로 확인하세요:
+  □ 매크로1_원본 과 정리한 매크로1 을 «각각 새 사본에서» 돌렸고, 두 결과의 서식(A3:F3 굵게·색, D4:D19 표시 형식, 틀 고정 위치)이 같았다
+  □ 고치기 전에 원래 코드를 「매크로1_원본」으로 남겼다(다른 모듈에)
+
+(돌려준 번호 1)
+
+practice 원본 여섯 파일 지문이 MANIFEST 와 같은가: True

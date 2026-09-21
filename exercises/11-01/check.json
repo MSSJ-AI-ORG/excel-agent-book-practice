@@ -1,0 +1,174 @@
+{
+  "id": "11-01",
+  "title": "손으로 세고, 일부러 틀리게 하고, 되돌려 놓기",
+  "chapter": "11장 11.1 손으로 셀 수 있는 작은 표로 먼저 시험하기 · 11.2 일부러 틀린 값 넣어 반응 보기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/이번 달 매출.xlsx",
+  "submit_file": "11-01_검산.xlsx",
+  "checks": [
+    {
+      "type": "sheet_exists",
+      "what": "「검산」 시트가 있다",
+      "sheet": "검산"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검산!B1 — 손 검산(이현우 줄만 골라 손으로 더한 값)",
+      "sheet": "검산",
+      "cell": "B1",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "sumproduct",
+        "ranges": [
+          "C2:C11",
+          "D2:D11"
+        ],
+        "where": [
+          {
+            "range": "A2:A11",
+            "equals": "이현우"
+          }
+        ]
+      },
+      "source_note": "원본 매출 시트에서 담당자가 「이현우」인 줄의 수량×단가를 채점기가 직접 더한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검산!B2 — 그때 수식이 낸 값",
+      "sheet": "검산",
+      "cell": "B2",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "sumproduct",
+        "ranges": [
+          "C2:C11",
+          "D2:D11"
+        ],
+        "where": [
+          {
+            "range": "A2:A11",
+            "equals": "이현우"
+          }
+        ]
+      },
+      "source_note": "원본 매출 시트에서 담당자가 「이현우」인 줄의 수량×단가를 채점기가 직접 더한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검산!B3 — 음성 대조(A4 를 바꾸었을 때 N2)",
+      "sheet": "검산",
+      "cell": "B3",
+      "expect_from": {
+        "calc": {
+          "expr": "s - c*d",
+          "vars": {
+            "s": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "sumproduct",
+              "ranges": [
+                "C2:C11",
+                "D2:D11"
+              ],
+              "where": [
+                {
+                  "range": "A2:A11",
+                  "equals": "이현우"
+                }
+              ]
+            },
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C4"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D4"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 이현우 합에서 원본 4행 수량×단가를 뺀 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검산!B4 — 줄어든 금액 = 4행 금액",
+      "sheet": "검산",
+      "cell": "B4",
+      "expect_from": {
+        "calc": {
+          "expr": "c*d",
+          "vars": {
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C4"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D4"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 C4×D4 를 채점기가 직접 곱한 값"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "매출!N2 가 SUMIF 수식이다",
+      "sheet": "매출",
+      "cell": "N2",
+      "functions": [
+        "SUMIF"
+      ]
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!N2 — 지금 값이 손 검산 값과 같다",
+      "sheet": "매출",
+      "cell": "N2",
+      "expect_from": {
+        "source": "practice/이번 달 매출.xlsx",
+        "sheet": "매출",
+        "op": "sumproduct",
+        "ranges": [
+          "C2:C11",
+          "D2:D11"
+        ],
+        "where": [
+          {
+            "range": "A2:A11",
+            "equals": "이현우"
+          }
+        ]
+      },
+      "source_note": "원본 매출 시트에서 담당자가 「이현우」인 줄의 수량×단가를 채점기가 직접 더한 값"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "매출 A1:E12 는 원본과 같다(A4 를 «이현우»로 돌려놓았다)",
+      "sheet": "매출",
+      "range": "A1:E12",
+      "source": "practice/이번 달 매출.xlsx"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 폴더의 원본 「이번 달 매출.xlsx」는 처음 받은 그대로다",
+      "file": "practice/이번 달 매출.xlsx"
+    }
+  ],
+  "checklist": [
+    "「합계는 내지 말고 행만 보여 줘」로 받은 세 줄을 내가 직접 더했다",
+    "더하는 시험(13행 임시 행)에서 N2 가 그대로인 것을 보고 — 범위가 13행까지 안 닿는다 — 그 줄을 지웠다"
+  ]
+}

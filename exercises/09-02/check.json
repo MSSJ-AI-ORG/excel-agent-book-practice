@@ -1,0 +1,191 @@
+{
+  "id": "09-02",
+  "title": "오류를 0 으로 덮지 말고 빈칸으로, 덮은 개수는 세어 두기",
+  "chapter": "9장 9.3 순환 참조 찾아 끊기 · 9.4 오류를 숨기지 말고 드러나게 두기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/이번 달 매출.xlsx",
+  "submit_file": "09-02_오류.xlsx",
+  "checks": [
+    {
+      "type": "cell_equals",
+      "what": "매출!C4 — 「미정」",
+      "sheet": "매출",
+      "cell": "C4",
+      "expect": "미정"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "매출 A·B열은 원본과 같다",
+      "sheet": "매출",
+      "range": "A1:B12",
+      "source": "practice/이번 달 매출.xlsx"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "매출 C1:C3 은 원본과 같다",
+      "sheet": "매출",
+      "range": "C1:C3",
+      "source": "practice/이번 달 매출.xlsx"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "매출 C5:D12 은 원본과 같다",
+      "sheet": "매출",
+      "range": "C5:D12",
+      "source": "practice/이번 달 매출.xlsx"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "매출 D1:D4 는 원본과 같다",
+      "sheet": "매출",
+      "range": "D1:D4",
+      "source": "practice/이번 달 매출.xlsx"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!J2 — 순환 참조(=J2+1)를 끊어 비워 두었다",
+      "sheet": "매출",
+      "cell": "J2",
+      "expect": ""
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "매출!E2 에 IFERROR 가 있다",
+      "sheet": "매출",
+      "cell": "E2",
+      "functions": [
+        "IFERROR"
+      ]
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "매출!E4 에 IFERROR 가 있다",
+      "sheet": "매출",
+      "cell": "E4",
+      "functions": [
+        "IFERROR"
+      ]
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "매출!E11 에 IFERROR 가 있다",
+      "sheet": "매출",
+      "cell": "E11",
+      "functions": [
+        "IFERROR"
+      ]
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!E12 — 합계는 4행만 빠진 값",
+      "sheet": "매출",
+      "cell": "E12",
+      "expect_from": {
+        "calc": {
+          "expr": "s - c*d",
+          "vars": {
+            "s": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "sumproduct",
+              "ranges": [
+                "C2:C11",
+                "D2:D11"
+              ]
+            },
+            "c": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "C4"
+            },
+            "d": {
+              "source": "practice/이번 달 매출.xlsx",
+              "sheet": "매출",
+              "op": "cell",
+              "cell": "D4"
+            }
+          }
+        }
+      },
+      "source_note": "원본 매출 수량×단가 전체 합에서 원본 4행 수량×단가를 뺀 값"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "매출!N1 — 덮은 칸 수를 수식으로 센다",
+      "sheet": "매출",
+      "cell": "N1"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!N1 — 덮은 칸 수 = 수량 칸에 숫자가 아닌 것이 든 줄 수",
+      "sheet": "매출",
+      "cell": "N1",
+      "expect_from": {
+        "calc": {
+          "expr": "a - b",
+          "vars": {
+            "a": {
+              "source": "@submitted",
+              "sheet": "매출",
+              "op": "count",
+              "range": "C2:C11"
+            },
+            "b": {
+              "source": "@submitted",
+              "sheet": "매출",
+              "op": "count",
+              "range": "C2:C11",
+              "where": [
+                {
+                  "range": "C2:C11",
+                  "gte": -1e+300
+                }
+              ]
+            }
+          }
+        }
+      },
+      "source_note": "제출 파일 매출 C2:C11 에서 숫자가 아닌 칸을 채점기가 다시 센 값"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "매출!N2 — 금액이 숫자로 나온 칸 수를 수식으로 센다",
+      "sheet": "매출",
+      "cell": "N2",
+      "functions": [
+        "COUNT"
+      ]
+    },
+    {
+      "type": "cell_equals",
+      "what": "매출!N2 — 오류 칸이 0 이 아니라 빈칸이다(숫자로 세지 않는다)",
+      "sheet": "매출",
+      "cell": "N2",
+      "expect_from": {
+        "source": "@submitted",
+        "sheet": "매출",
+        "op": "count",
+        "range": "C2:C11",
+        "where": [
+          {
+            "range": "C2:C11",
+            "gte": -1e+300
+          }
+        ]
+      },
+      "source_note": "제출 파일 매출 C2:C11 에서 숫자인 칸을 채점기가 다시 센 값 — 오류를 0 으로 덮으면 하나 더 많아진다"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 폴더의 원본 「이번 달 매출.xlsx」는 처음 받은 그대로다",
+      "file": "practice/이번 달 매출.xlsx"
+    }
+  ],
+  "checklist": [
+    "J2 에 =J2+1 을 넣었을 때 오류가 아니라 0 이 뜨는 것을 보았다",
+    "[수식] - [오류 검사] - [순환 참조]가 회색(비활성)이다 — 자기 자신을 가리키는 수식이 남아 있지 않다",
+    "매출!E4 가 0 이 아니라 빈칸으로 보인다"
+  ]
+}

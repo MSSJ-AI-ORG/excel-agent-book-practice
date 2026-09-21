@@ -1,0 +1,215 @@
+{
+  "id": "14-01",
+  "title": "읽는 곳과 쓰는 곳을 가르고, 돌려서 확인하기",
+  "chapter": "14장 14.1 이 코드가 어느 시트·범위를 건드리는지 짚기 · 14.2 If 조건이 무엇을 가르는지 말로 받기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/부서 관리대장.xlsm",
+  "submit_file": "14-01_집계.xlsm",
+  "checks": [
+    {
+      "type": "cell_equals",
+      "what": "정산!G3 — 부서별집계가 적은 판정(달성·미달)",
+      "sheet": "정산",
+      "cell": "G3",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(s >= t, '달성', '미달')",
+          "vars": {
+            "s": {
+              "source": "practice/부서 관리대장.xlsm",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "normalize": "strip",
+                  "equals": {
+                    "from": {
+                      "source": "practice/부서 관리대장.xlsm",
+                      "sheet": "정산",
+                      "op": "cell",
+                      "cell": "A3"
+                    }
+                  }
+                }
+              ]
+            },
+            "t": {
+              "source": "practice/부서 관리대장.xlsm",
+              "sheet": "기준",
+              "op": "lookup",
+              "key_range": "A3:A5",
+              "return_range": "B3:B5",
+              "equals": {
+                "from": {
+                  "source": "practice/부서 관리대장.xlsm",
+                  "sheet": "정산",
+                  "op": "cell",
+                  "cell": "A3"
+                }
+              }
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장에서 앞뒤 공백만 뺀 부서 이름이 같은 줄의 금액을 채점기가 더하고, 기준 시트의 목표와 견준 판정"
+    },
+    {
+      "type": "cell_equals",
+      "what": "정산!G4 — 부서별집계가 적은 판정(달성·미달)",
+      "sheet": "정산",
+      "cell": "G4",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(s >= t, '달성', '미달')",
+          "vars": {
+            "s": {
+              "source": "practice/부서 관리대장.xlsm",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "normalize": "strip",
+                  "equals": {
+                    "from": {
+                      "source": "practice/부서 관리대장.xlsm",
+                      "sheet": "정산",
+                      "op": "cell",
+                      "cell": "A4"
+                    }
+                  }
+                }
+              ]
+            },
+            "t": {
+              "source": "practice/부서 관리대장.xlsm",
+              "sheet": "기준",
+              "op": "lookup",
+              "key_range": "A3:A5",
+              "return_range": "B3:B5",
+              "equals": {
+                "from": {
+                  "source": "practice/부서 관리대장.xlsm",
+                  "sheet": "정산",
+                  "op": "cell",
+                  "cell": "A4"
+                }
+              }
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장에서 앞뒤 공백만 뺀 부서 이름이 같은 줄의 금액을 채점기가 더하고, 기준 시트의 목표와 견준 판정"
+    },
+    {
+      "type": "cell_equals",
+      "what": "정산!G5 — 부서별집계가 적은 판정(달성·미달)",
+      "sheet": "정산",
+      "cell": "G5",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(s >= t, '달성', '미달')",
+          "vars": {
+            "s": {
+              "source": "practice/부서 관리대장.xlsm",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "B4:B19",
+                  "normalize": "strip",
+                  "equals": {
+                    "from": {
+                      "source": "practice/부서 관리대장.xlsm",
+                      "sheet": "정산",
+                      "op": "cell",
+                      "cell": "A5"
+                    }
+                  }
+                }
+              ]
+            },
+            "t": {
+              "source": "practice/부서 관리대장.xlsm",
+              "sheet": "기준",
+              "op": "lookup",
+              "key_range": "A3:A5",
+              "return_range": "B3:B5",
+              "equals": {
+                "from": {
+                  "source": "practice/부서 관리대장.xlsm",
+                  "sheet": "정산",
+                  "op": "cell",
+                  "cell": "A5"
+                }
+              }
+            }
+          }
+        }
+      },
+      "source_note": "원본 대장에서 앞뒤 공백만 뺀 부서 이름이 같은 줄의 금액을 채점기가 더하고, 기준 시트의 목표와 견준 판정"
+    },
+    {
+      "type": "cell_equals",
+      "what": "정산!H3 — 공백무시합계(\"영업1팀\") 의 값",
+      "sheet": "정산",
+      "cell": "H3",
+      "expect_from": {
+        "source": "practice/부서 관리대장.xlsm",
+        "sheet": "대장",
+        "op": "sum",
+        "range": "D4:D19",
+        "where": [
+          {
+            "range": "B4:B19",
+            "equals": "영업1팀",
+            "normalize": "remove_spaces"
+          }
+        ]
+      },
+      "source_note": "원본 대장에서 공백을 모두 뺀 부서 이름이 「영업1팀」인 줄의 금액을 채점기가 직접 더한 값"
+    },
+    {
+      "type": "cell_is_constant",
+      "what": "정산!H3 은 수식이 아니라 숫자로 적었다",
+      "sheet": "정산",
+      "cell": "H3"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "대장 시트는 안 바뀌었다(읽는 곳)",
+      "sheet": "대장",
+      "range": "A1:F19",
+      "source": "practice/부서 관리대장.xlsm"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "기준 시트는 안 바뀌었다(읽는 곳)",
+      "sheet": "기준",
+      "range": "A1:C10",
+      "source": "practice/부서 관리대장.xlsm"
+    },
+    {
+      "type": "range_same_as_source",
+      "what": "정산 A1:D7 은 안 바뀌었다(쓰는 곳은 G열뿐)",
+      "sheet": "정산",
+      "range": "A1:D7",
+      "source": "practice/부서 관리대장.xlsm"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 폴더의 원본 「부서 관리대장.xlsm」은 처음 받은 그대로다",
+      "file": "practice/부서 관리대장.xlsm"
+    }
+  ],
+  "checklist": [
+    "읽는 곳 / 쓰는 곳을 가른 표를 받았고, 「실행하지는 마」를 붙였다",
+    "If 세 개를 «업무 말로» 설명받았다(문법 번역이 아니라)",
+    "G3 의 판정(Trim 으로 센 것)과 H3 의 값(공백을 다 빼고 센 것)이 어긋난다는 것을 봤다"
+  ]
+}

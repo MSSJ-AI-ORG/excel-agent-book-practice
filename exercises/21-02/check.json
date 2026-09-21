@@ -1,0 +1,529 @@
+{
+  "id": "21-02",
+  "title": "오류 셋을 심어 검사기가 잡는지 보기",
+  "chapter": "21장 21.3 빠진 행·중복된 행 찾아내기 · 21.4 검사 결과를 시트에 표로 남기기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "21-01 결과의 사본",
+  "submit_file": "21-02_오류심기.xlsx",
+  "checks": [
+    {
+      "type": "sheet_exists",
+      "what": "「검사기」 시트가 있다",
+      "sheet": "검사기"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!B2 (부서가 적힌 줄 수) — 오류를 심은 대장을 제대로 센다",
+      "sheet": "검사기",
+      "cell": "B2",
+      "expect_from": {
+        "source": "@submitted",
+        "sheet": "대장",
+        "op": "count",
+        "range": "B4:B40"
+      },
+      "source_note": "채점기가 «제출 파일의» 대장(4~40행)을 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!D2 (부서가 적힌 줄 수) — 원본과 달라졌으면 「확인」, 같으면 「통과」",
+      "sheet": "검사기",
+      "cell": "D2",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(a == b, '통과', '확인')",
+          "vars": {
+            "a": {
+              "source": "@submitted",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B40"
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B19"
+            }
+          }
+        }
+      },
+      "source_note": "채점기가 원본 대장과 제출 파일 대장을 각각 세어 댄 결과"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!B3 (금액 총합) — 오류를 심은 대장을 제대로 센다",
+      "sheet": "검사기",
+      "cell": "B3",
+      "expect_from": {
+        "source": "@submitted",
+        "sheet": "대장",
+        "op": "sum",
+        "range": "D4:D40"
+      },
+      "source_note": "채점기가 «제출 파일의» 대장(4~40행)을 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!D3 (금액 총합) — 원본과 달라졌으면 「확인」, 같으면 「통과」",
+      "sheet": "검사기",
+      "cell": "D3",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(a == b, '통과', '확인')",
+          "vars": {
+            "a": {
+              "source": "@submitted",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D40"
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D4:D19"
+            }
+          }
+        }
+      },
+      "source_note": "채점기가 원본 대장과 제출 파일 대장을 각각 세어 댄 결과"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!B4 (부서는 있는데 금액이 빈 줄 수) — 오류를 심은 대장을 제대로 센다",
+      "sheet": "검사기",
+      "cell": "B4",
+      "expect_from": {
+        "calc": {
+          "expr": "a - b",
+          "vars": {
+            "a": {
+              "source": "@submitted",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B40"
+            },
+            "b": {
+              "source": "@submitted",
+              "sheet": "대장",
+              "op": "count",
+              "range": "D4:D40",
+              "where": [
+                {
+                  "range": "B4:B40",
+                  "not_blank": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      "source_note": "채점기가 «제출 파일의» 대장(4~40행)을 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!D4 (부서는 있는데 금액이 빈 줄 수) — 원본과 달라졌으면 「확인」, 같으면 「통과」",
+      "sheet": "검사기",
+      "cell": "D4",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(a == b, '통과', '확인')",
+          "vars": {
+            "a": {
+              "calc": {
+                "expr": "a - b",
+                "vars": {
+                  "a": {
+                    "source": "@submitted",
+                    "sheet": "대장",
+                    "op": "count",
+                    "range": "B4:B40"
+                  },
+                  "b": {
+                    "source": "@submitted",
+                    "sheet": "대장",
+                    "op": "count",
+                    "range": "D4:D40",
+                    "where": [
+                      {
+                        "range": "B4:B40",
+                        "not_blank": true
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "b": {
+              "calc": {
+                "expr": "a - b",
+                "vars": {
+                  "a": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "sheet": "대장",
+                    "op": "count",
+                    "range": "B4:B19"
+                  },
+                  "b": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "sheet": "대장",
+                    "op": "count",
+                    "range": "D4:D19",
+                    "where": [
+                      {
+                        "range": "B4:B19",
+                        "not_blank": true
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "source_note": "채점기가 원본 대장과 제출 파일 대장을 각각 세어 댄 결과"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!B5 (금액이 음수인 줄 수) — 오류를 심은 대장을 제대로 센다",
+      "sheet": "검사기",
+      "cell": "B5",
+      "expect_from": {
+        "source": "@submitted",
+        "sheet": "대장",
+        "op": "count",
+        "range": "D4:D40",
+        "where": [
+          {
+            "range": "D4:D40",
+            "lt": 0
+          }
+        ]
+      },
+      "source_note": "채점기가 «제출 파일의» 대장(4~40행)을 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!D5 (금액이 음수인 줄 수) — 원본과 달라졌으면 「확인」, 같으면 「통과」",
+      "sheet": "검사기",
+      "cell": "D5",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(a == b, '통과', '확인')",
+          "vars": {
+            "a": {
+              "source": "@submitted",
+              "sheet": "대장",
+              "op": "count",
+              "range": "D4:D40",
+              "where": [
+                {
+                  "range": "D4:D40",
+                  "lt": 0
+                }
+              ]
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "D4:D19",
+                  "lt": 0
+                }
+              ]
+            }
+          }
+        }
+      },
+      "source_note": "채점기가 원본 대장과 제출 파일 대장을 각각 세어 댄 결과"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!B6 (금액이 1억을 넘는 줄 수) — 오류를 심은 대장을 제대로 센다",
+      "sheet": "검사기",
+      "cell": "B6",
+      "expect_from": {
+        "source": "@submitted",
+        "sheet": "대장",
+        "op": "count",
+        "range": "D4:D40",
+        "where": [
+          {
+            "range": "D4:D40",
+            "gt": 100000000
+          }
+        ]
+      },
+      "source_note": "채점기가 «제출 파일의» 대장(4~40행)을 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!D6 (금액이 1억을 넘는 줄 수) — 원본과 달라졌으면 「확인」, 같으면 「통과」",
+      "sheet": "검사기",
+      "cell": "D6",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(a == b, '통과', '확인')",
+          "vars": {
+            "a": {
+              "source": "@submitted",
+              "sheet": "대장",
+              "op": "count",
+              "range": "D4:D40",
+              "where": [
+                {
+                  "range": "D4:D40",
+                  "gt": 100000000
+                }
+              ]
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "D4:D19",
+              "where": [
+                {
+                  "range": "D4:D19",
+                  "gt": 100000000
+                }
+              ]
+            }
+          }
+        }
+      },
+      "source_note": "채점기가 원본 대장과 제출 파일 대장을 각각 세어 댄 결과"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!B7 (부서 표기 가짓수) — 오류를 심은 대장을 제대로 센다",
+      "sheet": "검사기",
+      "cell": "B7",
+      "expect_from": {
+        "source": "@submitted",
+        "sheet": "대장",
+        "op": "count_distinct",
+        "range": "B4:B40"
+      },
+      "source_note": "채점기가 «제출 파일의» 대장(4~40행)을 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!D7 (부서 표기 가짓수) — 원본과 달라졌으면 「확인」, 같으면 「통과」",
+      "sheet": "검사기",
+      "cell": "D7",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(a == b, '통과', '확인')",
+          "vars": {
+            "a": {
+              "source": "@submitted",
+              "sheet": "대장",
+              "op": "count_distinct",
+              "range": "B4:B40"
+            },
+            "b": {
+              "source": "practice/부서 관리대장.xlsx",
+              "sheet": "대장",
+              "op": "count_distinct",
+              "range": "B4:B19"
+            }
+          }
+        }
+      },
+      "source_note": "채점기가 원본 대장과 제출 파일 대장을 각각 세어 댄 결과"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!B8 (부서는 있는데 담당이 빈 줄 수) — 오류를 심은 대장을 제대로 센다",
+      "sheet": "검사기",
+      "cell": "B8",
+      "expect_from": {
+        "calc": {
+          "expr": "a - b",
+          "vars": {
+            "a": {
+              "source": "@submitted",
+              "sheet": "대장",
+              "op": "count",
+              "range": "B4:B40"
+            },
+            "b": {
+              "source": "@submitted",
+              "sheet": "대장",
+              "op": "count",
+              "range": "E4:E40",
+              "where": [
+                {
+                  "range": "B4:B40",
+                  "not_blank": true
+                }
+              ]
+            }
+          }
+        }
+      },
+      "source_note": "채점기가 «제출 파일의» 대장(4~40행)을 직접 센 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사기!D8 (부서는 있는데 담당이 빈 줄 수) — 원본과 달라졌으면 「확인」, 같으면 「통과」",
+      "sheet": "검사기",
+      "cell": "D8",
+      "expect_from": {
+        "calc": {
+          "expr": "if_(a == b, '통과', '확인')",
+          "vars": {
+            "a": {
+              "calc": {
+                "expr": "a - b",
+                "vars": {
+                  "a": {
+                    "source": "@submitted",
+                    "sheet": "대장",
+                    "op": "count",
+                    "range": "B4:B40"
+                  },
+                  "b": {
+                    "source": "@submitted",
+                    "sheet": "대장",
+                    "op": "count",
+                    "range": "E4:E40",
+                    "where": [
+                      {
+                        "range": "B4:B40",
+                        "not_blank": true
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "b": {
+              "calc": {
+                "expr": "a - b",
+                "vars": {
+                  "a": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "sheet": "대장",
+                    "op": "count",
+                    "range": "B4:B19"
+                  },
+                  "b": {
+                    "source": "practice/부서 관리대장.xlsx",
+                    "sheet": "대장",
+                    "op": "count",
+                    "range": "E4:E19",
+                    "where": [
+                      {
+                        "range": "B4:B19",
+                        "not_blank": true
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "source_note": "채점기가 원본 대장과 제출 파일 대장을 각각 세어 댄 결과"
+    },
+    {
+      "type": "cell_equals",
+      "what": "① 음수로 바꾼 금액을 검사기가 잡았다(D5 가 「확인」)",
+      "sheet": "검사기",
+      "cell": "D5",
+      "expect": "확인"
+    },
+    {
+      "type": "cell_equals",
+      "what": "② 비운 담당 칸을 검사기가 잡았다(D8 이 「확인」)",
+      "sheet": "검사기",
+      "cell": "D8",
+      "expect": "확인"
+    },
+    {
+      "type": "cell_equals",
+      "what": "③ 복사해 만든 중복 줄을 검사기가 잡았다(D9 가 「확인」)",
+      "sheet": "검사기",
+      "cell": "D9",
+      "expect": "확인"
+    },
+    {
+      "type": "sheet_exists",
+      "what": "「검사이력」 시트가 있다",
+      "sheet": "검사이력"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사이력 머리글 A1 = 「날짜」",
+      "sheet": "검사이력",
+      "cell": "A1",
+      "expect": "날짜"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사이력 머리글 B1 = 「항목 수」",
+      "sheet": "검사이력",
+      "cell": "B1",
+      "expect": "항목 수"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사이력 머리글 C1 = 「통과」",
+      "sheet": "검사이력",
+      "cell": "C1",
+      "expect": "통과"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사이력 머리글 D1 = 「확인이 뜬 것」",
+      "sheet": "검사이력",
+      "cell": "D1",
+      "expect": "확인이 뜬 것"
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사이력 2행(심기 전) — 여덟 항목이 다 통과였다",
+      "sheet": "검사이력",
+      "cell": "C2",
+      "expect": 8
+    },
+    {
+      "type": "cell_equals",
+      "what": "검사이력 3행(심은 뒤) — 통과 수가 지금 검사기의 「통과」 수와 같다(덮어쓰지 않고 한 줄 더했다)",
+      "sheet": "검사이력",
+      "cell": "C3",
+      "expect_from": {
+        "source": "@submitted",
+        "sheet": "검사기",
+        "op": "count",
+        "range": "D2:D9",
+        "where": [
+          {
+            "range": "D2:D9",
+            "equals": "통과"
+          }
+        ]
+      },
+      "source_note": "채점기가 제출 파일 검사기 D2:D9 에서 「통과」를 센 값"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 의 원본 「부서 관리대장.xlsx」는 처음 받은 그대로다",
+      "file": "practice/부서 관리대장.xlsx"
+    }
+  ],
+  "checklist": [
+    "검사기 B9(중복 줄 수)가 2 이상이다 — 한 줄을 복사해 만든 중복은 원본과 사본 둘 다 세어져 2 로 나온다(채점기는 아직 중복을 세지 못합니다)",
+    "심은 것은 셋인데 「확인」은 넷 이상 떴다 — 더 걸린 줄이 금액 총합(또는 행 수)인지 보았다",
+    "채점이 끝난 뒤 심은 오류 셋을 되돌렸고, 검사기 여덟 줄이 다시 전부 「통과」로 돌아왔다"
+  ]
+}

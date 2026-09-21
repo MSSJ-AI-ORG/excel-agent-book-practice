@@ -1,0 +1,54 @@
+{
+  "id": "P0-01",
+  "title": "작업 폴더를 세우고 물려받은 파일의 뼈대를 대조하기",
+  "chapter": "0부 종합 · 2장 2.1 작업 폴더 정하고 엑셀 파일 두기 · 2.2 · 2.3",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/부서 관리대장.xlsx",
+  "submit_file": "P0-01_뼈대.xlsx",
+  "_note": "뼈대 칸의 기대값은 채점기에 시트 이름·마지막 줄·수식 칸을 세는 기능이 아직 없어 값으로 박았다. 박은 값이 원본에서 나온 것인지는 _expected.py 가 확인한다.",
+  "checks": [
+    { "type": "sheet_exists", "what": "새 파일에 「뼈대」 시트가 있다", "sheet": "뼈대" },
+
+    { "type": "cell_equals", "what": "뼈대!A2 — 첫째 시트 이름", "sheet": "뼈대", "cell": "A2", "expect": "대장" },
+    { "type": "cell_equals", "what": "뼈대!B2 — 대장 시트의 행 수(값이 있는 마지막 줄 번호)", "sheet": "뼈대", "cell": "B2", "expect": 19 },
+    { "type": "cell_equals", "what": "뼈대!C2 — 대장 시트의 수식 칸 수", "sheet": "뼈대", "cell": "C2", "expect": 0 },
+
+    { "type": "cell_equals", "what": "뼈대!A3 — 둘째 시트 이름", "sheet": "뼈대", "cell": "A3", "expect": "기준" },
+    { "type": "cell_equals", "what": "뼈대!B3 — 기준 시트의 행 수", "sheet": "뼈대", "cell": "B3", "expect": 10 },
+    { "type": "cell_equals", "what": "뼈대!C3 — 기준 시트의 수식 칸 수", "sheet": "뼈대", "cell": "C3", "expect": 0 },
+
+    { "type": "cell_equals", "what": "뼈대!A4 — 셋째 시트 이름", "sheet": "뼈대", "cell": "A4", "expect": "정산" },
+    { "type": "cell_equals", "what": "뼈대!B4 — 정산 시트의 행 수", "sheet": "뼈대", "cell": "B4", "expect": 7 },
+    { "type": "cell_equals", "what": "뼈대!C4 — 정산 시트의 수식 칸 수", "sheet": "뼈대", "cell": "C4", "expect": 11 },
+
+    { "type": "cell_equals", "what": "뼈대!A5 — 넷째 시트 이름", "sheet": "뼈대", "cell": "A5", "expect": "월별" },
+    { "type": "cell_equals", "what": "뼈대!B5 — 월별 시트의 행 수", "sheet": "뼈대", "cell": "B5", "expect": 6 },
+    { "type": "cell_equals", "what": "뼈대!C5 — 월별 시트의 수식 칸 수", "sheet": "뼈대", "cell": "C5", "expect": 0 },
+
+    { "type": "cell_equals", "what": "뼈대!A6 — 다섯째 시트 이름", "sheet": "뼈대", "cell": "A6", "expect": "담당자" },
+    { "type": "cell_equals", "what": "뼈대!B6 — 담당자 시트의 행 수", "sheet": "뼈대", "cell": "B6", "expect": 5 },
+    { "type": "cell_equals", "what": "뼈대!C6 — 담당자 시트의 수식 칸 수", "sheet": "뼈대", "cell": "C6", "expect": 0 },
+
+    { "type": "cell_equals", "what": "뼈대!A7 — 여섯째 시트 이름", "sheet": "뼈대", "cell": "A7", "expect": "백업_0402" },
+    { "type": "cell_equals", "what": "뼈대!B7 — 백업_0402 시트의 행 수", "sheet": "뼈대", "cell": "B7", "expect": 8 },
+    { "type": "cell_equals", "what": "뼈대!C7 — 백업_0402 시트의 수식 칸 수", "sheet": "뼈대", "cell": "C7", "expect": 0 },
+
+    { "type": "cell_equals", "what": "뼈대!A8 — 일곱째 시트 이름", "sheet": "뼈대", "cell": "A8", "expect": "읽어주세요" },
+    { "type": "cell_equals", "what": "뼈대!B8 — 읽어주세요 시트의 행 수", "sheet": "뼈대", "cell": "B8", "expect": 4 },
+    { "type": "cell_equals", "what": "뼈대!C8 — 읽어주세요 시트의 수식 칸 수", "sheet": "뼈대", "cell": "C8", "expect": 0 },
+
+    { "type": "cell_equals", "what": "뼈대!A9 — 시트 목록 다음 줄은 비어 있다(없는 시트가 끼어들지 않았다)", "sheet": "뼈대", "cell": "A9", "expect": "" },
+
+    {
+      "type": "practice_untouched",
+      "what": "practice 의 원본 「부서 관리대장.xlsx」는 처음 받은 그대로다(「원본을 옮기지 말고 복사한다」)",
+      "file": "practice/부서 관리대장.xlsx"
+    }
+  ],
+  "checklist": [
+    "작업 폴더 안에 원본을 두는 폴더와 「작업본」·「_백업」 폴더가 있다",
+    "원본 파일을 옮기지 않고 복사해서 두었다",
+    "읽기 전용을 풀기 전에 「지금 이 파일이 정말 잠겨 있는지 먼저 확인해 줘」를 붙여 확인을 받았다"
+  ]
+}

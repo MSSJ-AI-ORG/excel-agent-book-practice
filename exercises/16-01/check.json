@@ -1,0 +1,178 @@
+{
+  "id": "16-01",
+  "title": "코드를 꺼내 모으고 프로시저 목록 만들기",
+  "chapter": "16장 16.1 폴더 안 xlsm 파일에서 코드만 뽑아내기 · 16.2 매크로마다 무슨 일을 하는지 한 줄 요약받기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/부서 관리대장.xlsm",
+  "submit_file": "16-01_매크로목록.xlsx",
+  "checks": [
+    {
+      "type": "sheet_exists",
+      "what": "「매크로목록」 시트가 있다",
+      "sheet": "매크로목록"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!A2 — 1번째 줄의 파일",
+      "sheet": "매크로목록",
+      "cell": "A2",
+      "expect": "집계매크로.bas",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/16-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!B2 — 1번째 줄의 프로시저",
+      "sheet": "매크로목록",
+      "cell": "B2",
+      "expect": "공백무시합계",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/16-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!C2 — 1번째 줄의 종류",
+      "sheet": "매크로목록",
+      "cell": "C2",
+      "expect": "Function",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/16-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!A3 — 2번째 줄의 파일",
+      "sheet": "매크로목록",
+      "cell": "A3",
+      "expect": "기록매크로.bas",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/16-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!B3 — 2번째 줄의 프로시저",
+      "sheet": "매크로목록",
+      "cell": "B3",
+      "expect": "매크로1",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/16-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!C3 — 2번째 줄의 종류",
+      "sheet": "매크로목록",
+      "cell": "C3",
+      "expect": "Sub",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/16-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!A4 — 3번째 줄의 파일",
+      "sheet": "매크로목록",
+      "cell": "A4",
+      "expect": "집계매크로.bas",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/16-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!B4 — 3번째 줄의 프로시저",
+      "sheet": "매크로목록",
+      "cell": "B4",
+      "expect": "부서별집계",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/16-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!C4 — 3번째 줄의 종류",
+      "sheet": "매크로목록",
+      "cell": "C4",
+      "expect": "Sub",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/16-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!A5 — 4번째 줄의 파일",
+      "sheet": "매크로목록",
+      "cell": "A5",
+      "expect": "깨진매크로.bas",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/16-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!B5 — 4번째 줄의 프로시저",
+      "sheet": "매크로목록",
+      "cell": "B5",
+      "expect": "요약만들기",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/16-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!C5 — 4번째 줄의 종류",
+      "sheet": "매크로목록",
+      "cell": "C5",
+      "expect": "Sub",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/16-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!A6 — 5번째 줄의 파일",
+      "sheet": "매크로목록",
+      "cell": "A6",
+      "expect": "위험매크로.bas",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/16-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!B6 — 5번째 줄의 프로시저",
+      "sheet": "매크로목록",
+      "cell": "B6",
+      "expect": "월말마감",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/16-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!C6 — 5번째 줄의 종류",
+      "sheet": "매크로목록",
+      "cell": "C6",
+      "expect": "Sub",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/16-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!A7 — 6번째 줄의 파일",
+      "sheet": "매크로목록",
+      "cell": "A7",
+      "expect": "깨진매크로.bas",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/16-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!B7 — 6번째 줄의 프로시저",
+      "sheet": "매크로목록",
+      "cell": "B7",
+      "expect": "월말정리",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/16-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!C7 — 6번째 줄의 종류",
+      "sheet": "매크로목록",
+      "cell": "C7",
+      "expect": "Sub",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/16-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "매크로목록!B8 — 목록 다음 줄은 비어 있다(빠지거나 더 붙은 프로시저가 없다)",
+      "sheet": "매크로목록",
+      "cell": "B8",
+      "expect": null,
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/16-01/_expected.py)"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 폴더의 원본 「부서 관리대장.xlsm」은 처음 받은 그대로다",
+      "file": "practice/부서 관리대장.xlsm"
+    }
+  ],
+  "checklist": [
+    "「코드모음」 폴더에 모듈마다 .bas 파일이 생겼고, 원본 파일의 매크로는 그대로 있다(꺼냈지, 옮기지 않았다)",
+    "「하는 일」 칸이 모두 채워져 있고, 프로시저 이름을 풀어 쓴 것이 아니라 코드를 읽고 쓴 내용이다",
+    "내 매크로 파일로도 해 봤다"
+  ]
+}

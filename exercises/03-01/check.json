@@ -1,0 +1,41 @@
+{
+  "id": "03-01",
+  "title": "서식·열 너비·틀 고정을 말로 걸고 값은 그대로 두기",
+  "chapter": "3장 3.2 셀 값과 글꼴·색을 말로 바꾸기 · 3.3 열 너비·행 높이·틀 고정을 말로 맞추기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/이번 달 매출.xlsx",
+  "submit_file": "03-01_서식.xlsx",
+  "checks": [
+    { "type": "font_bold", "what": "1행 머리글(A1:E1)이 굵게", "sheet": "매출", "range": "A1:E1" },
+    { "type": "number_format", "what": "C~E열 숫자(C2:E11)에 천 단위 구분 기호", "sheet": "매출", "range": "C2:E11", "format": "#,##0" },
+    { "type": "number_format", "what": "합계 칸(E12)에도 천 단위 구분 기호", "sheet": "매출", "range": "E12", "format": "#,##0" },
+    { "type": "fill_present", "what": "E열 금액 칸(E2:E11)에 채우기 색", "sheet": "매출", "range": "E2:E11" },
+    {
+      "type": "column_width_min",
+      "what": "D·E열이 금액을 ##### 없이 보여 줄 만큼 넓다(자동 맞춤까지 했다)",
+      "sheet": "매출",
+      "columns": ["D", "E"],
+      "min": 9
+    },
+    { "type": "freeze_panes", "what": "1행 머리글이 스크롤해도 보이게 틀 고정(A2)", "sheet": "매출", "cell": "A2" },
+    {
+      "type": "range_same_as_source",
+      "what": "매출 A1:E12 의 값과 수식이 원본과 같다(「값은 바꾸지 말고 서식만」)",
+      "sheet": "매출",
+      "range": "A1:E12",
+      "source": "practice/이번 달 매출.xlsx"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 의 원본 「이번 달 매출.xlsx」는 처음 받은 그대로다",
+      "file": "practice/이번 달 매출.xlsx"
+    }
+  ],
+  "checklist": [
+    "3.1 의 시킬 말로 붙었을 때 열린 통합 문서 수가 화면에 보이는 수와 같았다",
+    "E2 에 든 값과 화면에 보이는 글자를 따로 받아 보았다",
+    "D·E열을 6으로 좁혔을 때 금액 칸이 ##### 으로 보이는 것을 보았고, 그때도 셀 값은 그대로였다",
+    "틀 고정을 걸 때 「지금 몇 행에 틀 고정이 걸리는지도 알려 줘」를 붙여 답을 받았다"
+  ]
+}

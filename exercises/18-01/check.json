@@ -1,0 +1,185 @@
+{
+  "id": "18-01",
+  "title": "규칙 검사기를 만들고, 자가 작동부터 확인하기",
+  "chapter": "18장 18.2 받은 코드가 규칙을 지켰는지 대조하기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "16-01 의 코드모음 폴더",
+  "submit_file": "18-01_규칙검사.xlsx",
+  "checks": [
+    {
+      "type": "sheet_exists",
+      "what": "「결과」 시트가 있다",
+      "sheet": "결과"
+    },
+    {
+      "type": "cell_equals",
+      "what": "결과!A2 — 1번째 줄 모듈 이름",
+      "sheet": "결과",
+      "cell": "A2",
+      "expect": "기록매크로",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/18-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "결과!B2 — 기록매크로 의 R2 있음/없음",
+      "sheet": "결과",
+      "cell": "B2",
+      "expect": "있음",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/18-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "결과!C2 — 기록매크로 의 R4 통과 수",
+      "sheet": "결과",
+      "cell": "C2",
+      "expect": 0,
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/18-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "결과!D2 — 기록매크로 의 프로시저 수",
+      "sheet": "결과",
+      "cell": "D2",
+      "expect": 1,
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/18-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "결과!A3 — 2번째 줄 모듈 이름",
+      "sheet": "결과",
+      "cell": "A3",
+      "expect": "깨진매크로",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/18-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "결과!B3 — 깨진매크로 의 R2 있음/없음",
+      "sheet": "결과",
+      "cell": "B3",
+      "expect": "있음",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/18-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "결과!C3 — 깨진매크로 의 R4 통과 수",
+      "sheet": "결과",
+      "cell": "C3",
+      "expect": 1,
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/18-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "결과!D3 — 깨진매크로 의 프로시저 수",
+      "sheet": "결과",
+      "cell": "D3",
+      "expect": 2,
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/18-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "결과!A4 — 3번째 줄 모듈 이름",
+      "sheet": "결과",
+      "cell": "A4",
+      "expect": "위험매크로",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/18-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "결과!B4 — 위험매크로 의 R2 있음/없음",
+      "sheet": "결과",
+      "cell": "B4",
+      "expect": "있음",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/18-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "결과!C4 — 위험매크로 의 R4 통과 수",
+      "sheet": "결과",
+      "cell": "C4",
+      "expect": 1,
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/18-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "결과!D4 — 위험매크로 의 프로시저 수",
+      "sheet": "결과",
+      "cell": "D4",
+      "expect": 1,
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/18-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "결과!A5 — 4번째 줄 모듈 이름",
+      "sheet": "결과",
+      "cell": "A5",
+      "expect": "집계매크로",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/18-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "결과!B5 — 집계매크로 의 R2 있음/없음",
+      "sheet": "결과",
+      "cell": "B5",
+      "expect": "있음",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/18-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "결과!C5 — 집계매크로 의 R4 통과 수",
+      "sheet": "결과",
+      "cell": "C5",
+      "expect": 2,
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/18-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "결과!D5 — 집계매크로 의 프로시저 수",
+      "sheet": "결과",
+      "cell": "D5",
+      "expect": 2,
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/18-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "결과!A6 — 5번째 줄 모듈 이름",
+      "sheet": "결과",
+      "cell": "A6",
+      "expect": "기록매크로_시험",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/18-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "결과!B6 — 기록매크로_시험 의 R2 있음/없음",
+      "sheet": "결과",
+      "cell": "B6",
+      "expect": "없음",
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/18-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "결과!C6 — 기록매크로_시험 의 R4 통과 수",
+      "sheet": "결과",
+      "cell": "C6",
+      "expect": 0,
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/18-01/_expected.py)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "결과!D6 — 기록매크로_시험 의 프로시저 수",
+      "sheet": "결과",
+      "cell": "D6",
+      "expect": 1,
+      "source_note": "원본 〔대장m〕의 VBA 코드에서 따로 센 값(exercises/18-01/_expected.py)"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "practice 폴더의 원본 「부서 관리대장.xlsm」은 처음 받은 그대로다",
+      "file": "practice/부서 관리대장.xlsm"
+    }
+  ],
+  "checklist": [
+    "시험용 파일(Option Explicit 한 줄만 뺀 것)에서 검사기가 R2 를 「없음」으로 잡았다 — 검사기가 살아 있다",
+    "내 매크로 파일에도 걸어 봤고, 고칠 수 없는 이름(이벤트 프로시저 같은 것)이 걸렸는지 봤다"
+  ]
+}

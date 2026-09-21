@@ -1,0 +1,238 @@
+{
+  "id": "15-01",
+  "title": "부서별 파일 셋을 한 장으로 합치고 검산하기",
+  "chapter": "15장 15.2 여러 파일을 열어 한 장으로 모으기 · 15.3 결과를 새 파일로 저장하고 이름 규칙 걸기",
+  "mode": "auto",
+  "file_kind": "workbook",
+  "start_file": "practice/받은파일/",
+  "submit_file": "부서합계_YYYYMMDD_HHMM.xlsx",
+  "checks": [
+    {
+      "type": "sheet_exists",
+      "what": "「합친자료」 시트가 있다",
+      "sheet": "합친자료"
+    },
+    {
+      "type": "sheet_exists",
+      "what": "「검산」 시트가 있다",
+      "sheet": "검산"
+    },
+    {
+      "type": "cell_equals",
+      "what": "합친자료!D1 머리글이 「금액」이다",
+      "sheet": "합친자료",
+      "cell": "D1",
+      "expect_from": {
+        "source": "practice/받은파일/영업1팀_상반기.xlsx",
+        "sheet": "대장",
+        "op": "cell",
+        "cell": "D1"
+      },
+      "source_note": "영업1팀 파일의 D1 머리글"
+    },
+    {
+      "type": "cell_equals",
+      "what": "합친자료!E1 머리글이 「담당」이다",
+      "sheet": "합친자료",
+      "cell": "E1",
+      "expect_from": {
+        "source": "practice/받은파일/영업1팀_상반기.xlsx",
+        "sheet": "대장",
+        "op": "cell",
+        "cell": "E1"
+      },
+      "source_note": "영업1팀 파일의 E1 머리글"
+    },
+    {
+      "type": "cell_equals",
+      "what": "합친자료!G1 머리글이 「출처파일」이다",
+      "sheet": "합친자료",
+      "cell": "G1",
+      "expect": "출처파일"
+    },
+    {
+      "type": "cell_equals",
+      "what": "합친자료!A17 는 비어 있다(머리글이 끼어들거나 줄이 두 번 들어가지 않았다)",
+      "sheet": "합친자료",
+      "cell": "A17",
+      "expect": null
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "검산!B1 합친 행 수가 COUNTA 수식이다",
+      "sheet": "검산",
+      "cell": "B1",
+      "functions": [
+        "COUNTA"
+      ]
+    },
+    {
+      "type": "cell_equals",
+      "what": "검산!B1 합친 행 수 = 세 파일의 데이터 줄 수 합",
+      "sheet": "검산",
+      "cell": "B1",
+      "expect_from": {
+        "calc": {
+          "expr": "a + b + c",
+          "vars": {
+            "a": {
+              "source": "practice/받은파일/영업1팀_상반기.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "A2:A1000"
+            },
+            "b": {
+              "source": "practice/받은파일/영업2팀_상반기.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "A2:A1000"
+            },
+            "c": {
+              "source": "practice/받은파일/영업3팀_상반기.xlsx",
+              "sheet": "대장",
+              "op": "count",
+              "range": "A2:A1000"
+            }
+          }
+        }
+      },
+      "source_note": "받은파일 세 개에서 일자가 적힌 줄을 채점기가 직접 센 합"
+    },
+    {
+      "type": "cell_is_formula",
+      "what": "검산!B2 합친 금액 합이 SUM 수식이다",
+      "sheet": "검산",
+      "cell": "B2",
+      "functions": [
+        "SUM"
+      ]
+    },
+    {
+      "type": "cell_equals",
+      "what": "검산!B2 합친 금액 합 = 세 파일에서 머리글이 「금액」인 열의 합",
+      "sheet": "검산",
+      "cell": "B2",
+      "expect_from": {
+        "calc": {
+          "expr": "a + b + c",
+          "vars": {
+            "a": {
+              "source": "practice/받은파일/영업1팀_상반기.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D2:D1000"
+            },
+            "b": {
+              "source": "practice/받은파일/영업2팀_상반기.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "D2:D1000"
+            },
+            "c": {
+              "source": "practice/받은파일/영업3팀_상반기.xlsx",
+              "sheet": "대장",
+              "op": "sum",
+              "range": "E2:E1000"
+            }
+          }
+        }
+      },
+      "source_note": "영업1·2팀은 D열, 영업3팀은 E열(그 파일은 금액과 담당의 열 순서가 바뀌어 있다)을 채점기가 직접 더한 값"
+    },
+    {
+      "type": "cell_equals",
+      "what": "합친자료!G2 출처파일 = 영업1팀_상반기.xlsx",
+      "sheet": "합친자료",
+      "cell": "G2",
+      "expect": "영업1팀_상반기.xlsx"
+    },
+    {
+      "type": "cell_equals",
+      "what": "합친자료!D13 — 영업3팀 줄의 금액이 금액 열에 들어갔다",
+      "sheet": "합친자료",
+      "cell": "D13",
+      "expect_from": {
+        "source": "practice/받은파일/영업3팀_상반기.xlsx",
+        "sheet": "대장",
+        "op": "cell",
+        "cell": "E2"
+      },
+      "source_note": "영업3팀 파일 E2(그 파일의 「금액」 열)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "합친자료!E13 — 영업3팀 줄의 담당이 담당 열에 들어갔다",
+      "sheet": "합친자료",
+      "cell": "E13",
+      "expect_from": {
+        "source": "practice/받은파일/영업3팀_상반기.xlsx",
+        "sheet": "대장",
+        "op": "cell",
+        "cell": "D2"
+      },
+      "source_note": "영업3팀 파일 D2(그 파일의 「담당」 열)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "합친자료!G13 출처파일 = 영업3팀_상반기.xlsx",
+      "sheet": "합친자료",
+      "cell": "G13",
+      "expect": "영업3팀_상반기.xlsx"
+    },
+    {
+      "type": "cell_equals",
+      "what": "합친자료!D16 — 영업3팀 줄의 금액이 금액 열에 들어갔다",
+      "sheet": "합친자료",
+      "cell": "D16",
+      "expect_from": {
+        "source": "practice/받은파일/영업3팀_상반기.xlsx",
+        "sheet": "대장",
+        "op": "cell",
+        "cell": "E5"
+      },
+      "source_note": "영업3팀 파일 E5(그 파일의 「금액」 열)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "합친자료!E16 — 영업3팀 줄의 담당이 담당 열에 들어갔다",
+      "sheet": "합친자료",
+      "cell": "E16",
+      "expect_from": {
+        "source": "practice/받은파일/영업3팀_상반기.xlsx",
+        "sheet": "대장",
+        "op": "cell",
+        "cell": "D5"
+      },
+      "source_note": "영업3팀 파일 D5(그 파일의 「담당」 열)"
+    },
+    {
+      "type": "cell_equals",
+      "what": "합친자료!G16 출처파일 = 영업3팀_상반기.xlsx",
+      "sheet": "합친자료",
+      "cell": "G16",
+      "expect": "영업3팀_상반기.xlsx"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "받은 파일 「영업1팀_상반기.xlsx」은 처음 받은 그대로다(읽기만 했다)",
+      "file": "practice/받은파일/영업1팀_상반기.xlsx"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "받은 파일 「영업2팀_상반기.xlsx」은 처음 받은 그대로다(읽기만 했다)",
+      "file": "practice/받은파일/영업2팀_상반기.xlsx"
+    },
+    {
+      "type": "practice_untouched",
+      "what": "받은 파일 「영업3팀_상반기.xlsx」은 처음 받은 그대로다(읽기만 했다)",
+      "file": "practice/받은파일/영업3팀_상반기.xlsx"
+    }
+  ],
+  "checklist": [
+    "파일 이름이 「부서합계_날짜8자리_시각4자리.xlsx」 모양이다(예: 부서합계_20260921_1430.xlsx)",
+    "합치기 전에 열 이름과 순서를 먼저 확인하게 했고, 영업3팀 파일의 금액·담당 열 순서가 다르다는 답을 받았다",
+    "「읽은 파일은 저장하지 말고 닫아 줘」를 붙였고, 다 닫았다는 확인을 받았다",
+    "저장한 파일을 다시 열어 시트 수와 행 수를 확인했다",
+    "결과 파일이 .xlsx 다(매크로가 들어 있지 않다)"
+  ]
+}
