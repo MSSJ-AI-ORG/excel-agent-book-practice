@@ -24,7 +24,7 @@
 **② git 으로 받기 (git 을 써 봤다면)**
 
 ```
-git clone <이 저장소 주소>
+git clone https://github.com/MSSJ-AI-ORG/excel-agent-book-practice.git
 ```
 
 ---
